@@ -47,8 +47,8 @@ features: the four trivial baselines, `body_line_count`, `imperative_opener_coun
 | `status` | `estimated`, or `zero_variance_or_insufficient_data`: no estimate, because the scorer, outcome or control takes one value (for example a check every variant passes), or the control fully explains the scorer |
 | `marginal_p_permutations`, `p_permutations` | Always empty: permutation tests apply only at n ≤ 9 |
 
-Recomputed by `reproduce.py`: partly, `partial_spearman` in the two rows where `scorer` is
-`description_word_count`.
+Recomputed by `associations.py`: every row (`reproduce.py` also checks the two rows where `scorer`
+is `description_word_count`).
 
 ### `incremental_validity_incumbent.csv`: one row per scope and baseline (10)
 
@@ -62,9 +62,7 @@ changes out-of-sample R² by -0.02 and -0.08). The other eight rows are not repo
 |---|---|
 | `r2_conformance_only`, `delta_r2_adding_conformance` | `r2_scorer_only` and `delta_r2_adding_scorer` with `conformance_overall` as the scorer |
 
-Recomputed by `reproduce.py`: no. Its six rows with baseline `description_word_count`,
-`has_numbered_steps` or `has_code_block` equal `conformance_overall` rows of
-`scorers/incremental_validity.csv`, which it checks.
+Recomputed by `incumbent_validity.py`: every row.
 
 ## selection_codex/
 
@@ -79,8 +77,8 @@ Appendix F, "Two changes to the Codex replication" (the incumbent at -0.01 and +
 for `description_word_count`. `p_holm` is Holm within one detection rule and model. The bootstrap
 columns are empty.
 
-Recomputed by `reproduce.py`: partly, `partial_spearman` and `p_holm` in the 10 `amended` rows; not
-the `original` rows.
+Recomputed: `partial_spearman` and `p_holm` in every row, the `amended` rows by `reproduce.py` and
+the `original` rows by `codex.py`.
 
 ### `incremental_validity.csv`: one row per detection rule, model and scorer (20)
 
@@ -88,8 +86,8 @@ Supports §4 (the Codex paragraph) and Table F1 (Codex columns). Columns as in
 `scorers/incremental_validity.csv`, with the same scorers and `description_word_count` as the
 baseline. The `original` rows are not reported.
 
-Recomputed by `reproduce.py`: partly, `delta_r2_adding_scorer` and `delta_r2_adding_baseline` in the
-10 `amended` rows; not the `original` rows.
+Recomputed: `delta_r2_adding_scorer` and `delta_r2_adding_baseline` in every row, the `amended` rows
+by `reproduce.py` and the `original` rows by `codex.py`.
 
 ### `word_count.csv`: one row per detection rule and model (4)
 
@@ -98,8 +96,8 @@ Supports §4 (word count predicts the Codex rate beyond the incumbent, +0.71 and
 replication" (+0.73 and +0.63). Description word count controlling for `conformance_overall`.
 `p_holm` is Holm across the two models within one detection rule.
 
-Recomputed by `reproduce.py`: partly, `partial_spearman` and `p_holm` in the two `amended` rows; not
-the `original` rows.
+Recomputed: `partial_spearman` and `p_holm` in every row, the `amended` rows by `reproduce.py` and
+the `original` rows by `codex.py`.
 
 ### `transfer.csv`: one row per model (2)
 
@@ -107,7 +105,7 @@ Supports §4 (the variant ordering carries over, Spearman 0.72 and 0.97) and App
 Spearman correlation between the 17 variants' Codex rates and their Claude Code rates, its p-value
 (rounded to six decimals), and each harness's mean rate.
 
-Recomputed by `reproduce.py`: partly, `spearman_codex_vs_claude_code` in both rows.
+Recomputed: every row, `spearman_codex_vs_claude_code` by `reproduce.py` and the rest by `codex.py`.
 
 ### `block_rates.csv`: one row per model, block and directness level (20)
 
@@ -116,7 +114,7 @@ one; the L1 positive control invokes it in 16 of 16). `invoked` / `total` = `rat
 of `data/selection/codex_cells.csv`: `corpus_b` (136 cells per level), `e1` (64), `baseline` (8)
 and `positive_control` (8, L1 only).
 
-Recomputed by `reproduce.py`: no.
+Recomputed by `codex.py`: every row.
 
 ### `listing.csv`: one row per model and malformed-name variant (8)
 
@@ -124,7 +122,7 @@ Supports Appendix F, other notes (Codex listed the skill in all 192 cells). The 
 a malformed `name` (`*-nameformat` and `p-name-format`): `cells`, `listed` (cells in which the skill
 appeared in Codex's skill listing) and `invoked`.
 
-Recomputed by `reproduce.py`: no.
+Recomputed by `codex.py`: every row.
 
 ## naming/
 
@@ -144,8 +142,8 @@ Supports §4 (naming raises invocation by 0.56 and 0.78, CMH p < 10^-18) and Tab
 | `cmh_statistic`, `cmh_p` | Pooled rows: the CMH chi-square (1 degree of freedom, no continuity correction) and its p-value. Both `cmh_p` values here are below 10^-18 and stored rounded to 0 |
 | `n_informative_strata`, `dropped_strata` | Pooled rows: strata in the test, and those dropped (`none`, or `<length>:<reason>`) |
 
-Recomputed by `reproduce.py`: partly, `rd_mh`, `ci_low`, `ci_high` and `cmh_p` in the two pooled
-rows.
+Recomputed by `naming.py`: every row (`reproduce.py` also checks `rd_mh`, `ci_low`, `ci_high` and
+`cmh_p` in the two pooled rows).
 
 ### `codex_cmh.csv`: one row per detection rule, model and length, plus pooled rows (20)
 
@@ -153,8 +151,8 @@ Supports §4 (on Codex, naming raises invocation by 0.34 and 0.16) and Table F3;
 pooled rows support Appendix F, "Two changes to the Codex replication" (+0.33 and +0.24). Columns
 as in `claude_code_cmh.csv`, plus `detection`.
 
-Recomputed by `reproduce.py`: partly, `rd_mh`, `ci_low`, `ci_high` and `cmh_p` in the two pooled
-`amended` rows; not the `original` rows.
+Recomputed by `naming.py`: every row, under both detection rules (`reproduce.py` also checks the
+pooled `amended` rows).
 
 ### `claude_code_by_level.csv`: one row per model and directness level (6)
 
@@ -162,13 +160,13 @@ Supports §4 (the gap persists at L4, 0.44 and 0.59) and Table F3 (L2 to L4 colu
 over the four lengths (32 cells each side), and `gap`, `with_rate` minus `without_rate`. The L4
 prompt never says "release notes".
 
-Recomputed by `reproduce.py`: no.
+Recomputed by `naming.py`: every row.
 
 ### `codex_by_level.csv`: one row per model and directness level (6)
 
 Supports Table F3 (Codex rows, L2 to L4 columns). As `claude_code_by_level.csv`, for Codex.
 
-Recomputed by `reproduce.py`: no.
+Recomputed by `naming.py`: every row.
 
 ### `claude_code_anchors.csv`: one row per model and anchor variant (4)
 
@@ -182,7 +180,8 @@ selection grid.
 | `a1_invoked`, `a1_total`, `a1_rate` | The same variant in the selection grid (`outcome_skill_invoked_count` in `data/selection/claude_code_variants.csv`) |
 | `fisher_p` | Two-sided Fisher exact test of the two |
 
-Recomputed by `reproduce.py`: no.
+Recomputed by `naming.py`: every row, with the grid counts taken from
+`data/selection/claude_code_cells.csv`.
 
 ## execution/
 
@@ -197,8 +196,8 @@ and 21 scorers (all but `description_contains_release_note`).
 | `analysis_scope` | `pooled` (every eligible version), `family:<task>` (one task family), or `arm` (one `actor` and `refiner` pair; 8 arms) |
 | `p_holm` | Holm within one scope (one arm, for `arm` rows) and outcome |
 
-Recomputed by `clustered.py`: partly, `partial_spearman` in the 18 pooled rows that
-`clustered_associations.csv` re-estimates.
+Recomputed by `associations.py`: every row (`clustered.py` also checks `partial_spearman` in the 18
+pooled rows that `clustered_associations.csv` re-estimates).
 
 ### `clustered_associations.csv`: one row per outcome and scorer, plus one seed-quality row per outcome (20)
 
@@ -338,7 +337,7 @@ Supports Appendix F, other notes (`skill-check`'s description category takes two
 the scope; `low_range` is true below 5 distinct values, and `status` is then `low_range` rather
 than `available`.
 
-Recomputed by `reproduce.py`: no.
+Recomputed by `range_check.py`: every row.
 
 ### `determinism.csv`: one row per tool, skill and output variable (540)
 
@@ -347,7 +346,8 @@ The four independent tools scored 20 skills drawn at random (4 selection variant
 and 16 execution versions, `A__<run>__<artifact>`) three times: `run1` is the main scoring run and
 `run2` and `run3` are repeats. `identical` is true in all 540 rows.
 
-Recomputed by `reproduce.py`: no.
+Not recomputed: it records repeated runs of the four scoring tools, which cannot be derived
+from `data/`.
 
 ### `validator_version_check.csv`: one row per skill (542)
 
@@ -361,7 +361,7 @@ versions (`A__`) and the 8 naming-pair variants (`E1__`).
 | `checks_compared` | Per-check outcomes compared: 10 for most skills, 1 for the 10 versions whose frontmatter fails to parse, 0 for the naming-pair variants, whose 1.1.2 check outcomes were not recorded |
 | `check_differences`, `error` | Checks whose outcome differs, and any tool error (none in either) |
 
-Recomputed by `reproduce.py`: no.
+Not recomputed: it records runs of two validator versions, which cannot be derived from `data/`.
 
 ## The §6 probe
 

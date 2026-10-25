@@ -50,16 +50,23 @@ under a minute to several minutes.
 | Script | Paper | Checked against |
 |---|---|---|
 | `reproduce.py` | §4 and §5: incremental validity (out-of-sample gain in R², and partial Spearman with Holm correction) for selection on both harnesses and for execution; the reverse word-count comparison; the transfer of the variant ordering between harnesses; the naming-pair Mantel–Haenszel risk differences and CMH tests | `results/scorers/`, `results/selection_*/` and `results/naming/`; the 34 Claude Code invocation rates against `data/selection/claude_code_variants.csv` |
+| `associations.py` | §4, §5 and Appendix F: each of the incumbent's checks and our text features against selection and execution, including the description-length check and the reverse comparison | `results/selection_claude_code/associations.csv`, `results/execution/associations.csv` |
+| `incumbent_validity.py` | §4 and Table F1: the incumbent's nested-model comparison with each trivial baseline | `results/selection_claude_code/incremental_validity_incumbent.csv` |
+| `codex.py` | §4, Appendices D and F: the Codex CLI results under the original detection rule, block rates (no-skill baseline and positive control) and the listing of malformed names | `results/selection_codex/` |
+| `naming.py` | §4, Appendix F and Table F3: every naming-pair stratum on both harnesses, the gaps by directness level, the drift anchors and the registered decision rule | `results/naming/`, `data/naming/claude_code_counts.csv`, and the paper |
 | `within_between.py` | §5, Figure 2, Appendix E and Table G3: each score's association with performance within lineages, between lineages, and between lineages with arms centred | `results/execution/within_between.csv`, `within_between_arm.csv` |
 | `clustered.py` | §5, Appendix E and Table G2: the execution associations with lineage-bootstrap intervals | `results/execution/clustered_associations.csv`, and the pooled rows of `associations.csv` |
 | `newline.py` | §5, Figure 1 (the † row) and Table G1: `skill-check` with its trailing-newline rule removed | `results/execution/sensitivity_newline.csv`, and the paper's counts (449 refined versions, 68 seeds) |
 | `probe.py` | §6 and Appendix H: the cheap probe (Tables H1 and H2, and the cost paragraph) | the paper, since no results table holds the probe |
 | `composition.py` | §3, §6 and Appendix C: the makeup of the execution corpus and how its lineages ended | `results/execution/corpus_composition.json`, `data/execution/lineage_termination.csv` |
 | `detectable_effect.py` | §7, Figure 1 (the grey bars) and Table E1: the smallest effect each test detects | `results/scorers/minimum_detectable_effect.csv` |
+| `range_check.py` | §5, Appendix F, Table G1 and Figure 1: how many distinct values each score takes | `results/scorers/range_check.csv` |
 
 `figures.py` draws Figures 1 and 2 from `results/` into `figures/`. It needs matplotlib, and its
 output matches the paper's when the Open Sans font is installed or given with `--fonts`.
 [results/README.md](results/README.md) says, for each result table, which script recomputes it.
+Two tables record runs of the scoring tools themselves and cannot be recomputed from `data/`:
+`results/scorers/determinism.csv` and `validator_version_check.csv`.
 
 To test another scorer, score the skills in `stimuli/skill_versions/<run>/<artifact>/SKILL.md` (or
 `stimuli/descriptions/` for selection) and join on `run` and `artifact` (or `variant`).
