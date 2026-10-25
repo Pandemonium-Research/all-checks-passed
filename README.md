@@ -1,0 +1,89 @@
+# All Checks Passed: data and results
+
+Data release for **"All Checks Passed: Static Scores for Agent Skills Predict Neither Selection nor
+Execution"** (Sampriti Saha and Pranav Hemanth, Pandemonium Research), Agent Evaluation Science
+Symposium, Fall 2026 (non-archival).
+
+The paper asks whether published static scores for agent skills predict either step of using a
+skill, selection or execution, better than trivial text baselines such as description word count.
+This release holds the per-cell and per-version data behind every statistic in the paper, the
+derived result tables, the stimuli and the text of every skill version scored. Column definitions are in
+[DATA_DICTIONARY.md](DATA_DICTIONARY.md).
+
+## Contents
+
+```
+data/
+  selection/   Claude Code cells and per-variant table; Codex CLI cells; independent tools' scores
+  naming/      Claude Code naming-pair cells and counts (Codex naming cells are in selection/)
+  execution/   517 skill versions in 68 lineages; independent tools' scores; lineage termination
+  probe/       per-lineage starting score, plateau and refinement distance
+results/       derived tables: associations, incremental validity, CMH tests, MDE, decompositions
+stimuli/       the 25 description variants, the four selection prompts and the 517 skill versions
+analysis/      reproduce.py: recomputes the paper's statistics from data/ and checks results/
+```
+
+| Paper | Data | Results |
+|---|---|---|
+| §4 Selection, Claude Code (Figure 1, left; Appendix F) | `data/selection/claude_code_cells.csv`, `claude_code_variants.csv`, `independent_scores.csv` | `results/selection_claude_code/`, `results/scorers/` |
+| §4 Naming pairs (Appendix F) | `data/naming/claude_code_cells.csv`, `claude_code_counts.csv`; Codex rows in `data/selection/codex_cells.csv` (block `e1`) | `results/naming/` |
+| §4 Second harness, Codex CLI (Appendix F) | `data/selection/codex_cells.csv` | `results/selection_codex/` |
+| §5 Execution (Figures 1 right and 2; Appendix G) | `data/execution/versions.csv`, `independent_scores.csv`; texts in `stimuli/skill_versions/` | `results/execution/`, `results/scorers/` |
+| §6 Cheap probe (Appendix H) | `data/probe/`, `data/execution/lineage_termination.csv` | `results/execution/corpus_composition.json` |
+| §7 Power (Appendix E) | | `results/scorers/minimum_detectable_effect.csv` |
+| Appendix A, validator version | | `results/scorers/validator_version_check.csv` |
+
+## Reproducing the statistics
+
+```
+pip install -r requirements.txt
+python3 analysis/reproduce.py              # about 3 seconds
+python3 analysis/reproduce.py --bootstrap  # adds the 10,000-draw lineage-bootstrap intervals
+```
+
+`reproduce.py` uses only `data/`. It recomputes the incremental-validity tests (out-of-sample gain
+in R², and partial Spearman with Holm correction) for selection on both harnesses and for
+execution, the reverse word-count comparison, the transfer of the variant ordering between
+harnesses, and the naming-pair Mantel–Haenszel risk differences and CMH tests. It compares every
+value with `results/` and exits non-zero on any difference.
+
+To test another scorer, score the skills in `stimuli/skill_versions/<run>/<artifact>/SKILL.md` (or
+`stimuli/descriptions/` for selection) and join on `run` and `artifact` (or `variant`).
+
+## Units of analysis
+
+Selection is analysed per **variant** (17 per model), not per cell: each variant's invocation rate
+is the share of its 24 cells (8 task instances x 3 prompt-directness levels) in which the agent
+invoked the skill. Execution is analysed per **lineage** (68): a seed skill and its successive
+rewrites. The cell tables are released so that every rate can be recomputed.
+
+## How the data were measured
+
+A cell counts as selected only when the harness records the agent invoking the skill or reading its
+file; a fingerprint string defined only in the skill cross-checks that record, and the agent's own
+report never decides. With no skill installed, invocation is 0 of 24 cells per model in both
+harnesses (the `baseline` rows). Execution outcomes are mean scores from a deterministic rubric,
+never an LLM judge, on 8 training instances and, for seeds and accepted versions, 8 held-out
+instances. Details are in the paper's §3 and Appendices C to E.
+
+## What is not released
+
+- Raw agent transcripts and harness logs, because they contain local paths and session metadata.
+  The cell tables keep each cell's outcome fields.
+- The task fixtures and the grading rubrics.
+
+## Citation
+
+```bibtex
+@inproceedings{saha2026allcheckspassed,
+  title     = {All Checks Passed: Static Scores for Agent Skills Predict Neither Selection nor Execution},
+  author    = {Saha, Sampriti and Hemanth, Pranav},
+  booktitle = {Agent Evaluation Science Symposium (non-archival)},
+  year      = {2026}
+}
+```
+
+## License
+
+Code (`analysis/`): MIT, see [LICENSE](LICENSE). Data, results, stimuli and
+documentation: CC BY 4.0, see [LICENSE-DATA](LICENSE-DATA).
