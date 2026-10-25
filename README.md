@@ -9,6 +9,7 @@ skill, selection or execution, better than trivial text baselines such as descri
 This release holds the per-cell and per-version data behind every statistic in the paper, the
 derived result tables, the stimuli and the text of every skill version scored. Column definitions are in
 [DATA_DICTIONARY.md](DATA_DICTIONARY.md).
+Each result table, and the claim it supports, is described in [results/README.md](results/README.md).
 
 ## Contents
 
@@ -44,8 +45,9 @@ python3 analysis/reproduce.py --bootstrap  # adds the 10,000-draw lineage-bootst
 `reproduce.py` uses only `data/`. It recomputes the incremental-validity tests (out-of-sample gain
 in R², and partial Spearman with Holm correction) for selection on both harnesses and for
 execution, the reverse word-count comparison, the transfer of the variant ordering between
-harnesses, and the naming-pair Mantel–Haenszel risk differences and CMH tests. It compares every
-value with `results/` and exits non-zero on any difference.
+harnesses, and the naming-pair Mantel–Haenszel risk differences and CMH tests. It compares each
+value with `results/`, except the 34 Claude Code invocation rates, which it checks against
+`data/selection/claude_code_variants.csv`, and exits non-zero on any difference.
 
 To test another scorer, score the skills in `stimuli/skill_versions/<run>/<artifact>/SKILL.md` (or
 `stimuli/descriptions/` for selection) and join on `run` and `artifact` (or `variant`).
