@@ -29,11 +29,12 @@ model short names and `directness` are defined in [DATA_DICTIONARY.md](../DATA_D
 
 ### `associations.csv`: one row per model and scorer (44)
 
-Supports §4 (the incumbent's partial ρ of +0.20 and +0.12), Table F1 (last row: word count given
-the incumbent, +0.84 and +0.74) and the text beside Table E1. The 22 scorers are the incumbent's
-overall score, description subtotal and eleven checks, and nine text features: the four trivial
-baselines, `body_line_count`, `imperative_opener_count`, `has_worked_example`,
-`description_trigger_cue_count` and `description_contains_release_note`.
+Supports §4 (the incumbent's partial ρ of +0.20 and +0.12; controlling for the incumbent,
+`conformance_check_description_length` reaches +0.793 on `qwen` and +0.614 on `deepseek`), Table F1
+(last row: word count given the incumbent, +0.84 and +0.74) and the text beside Table E1. The 22
+scorers are the incumbent's overall score, description subtotal and eleven checks, and nine text
+features: the four trivial baselines, `body_line_count`, `imperative_opener_count`,
+`has_worked_example`, `description_trigger_cue_count` and `description_contains_release_note`.
 
 | Column | Meaning |
 |---|---|
@@ -71,32 +72,34 @@ Selection on Codex CLI. Tables without a `detection` column use amended detectio
 
 ### `partial_spearman.csv`: one row per detection rule, model and scorer (20)
 
-Supports §4 (the Codex paragraph) and Table F1 (Codex columns); the `original` rows support the
-paragraph on the two Codex changes in Appendix F (the incumbent at -0.01 and +0.27). Columns as in
+Supports §4 (the Codex paragraph) and Table F1 (Codex columns); the `original` rows support
+Appendix F, "Two changes to the Codex replication" (the incumbent at -0.01 and +0.27). Columns as in
 `scorers/partial_spearman.csv`, for the Codex invocation rate. The scorers are `sc_score`,
 `sc_description`, `mk_description_quality`, `ss_total` and `conformance_overall`, each controlling
 for `description_word_count`. `p_holm` is Holm within one detection rule and model. The bootstrap
 columns are empty.
 
-Recomputed by `reproduce.py`: partly, `partial_spearman` and `p_holm` in the 10 `amended` rows.
+Recomputed by `reproduce.py`: partly, `partial_spearman` and `p_holm` in the 10 `amended` rows; not
+the `original` rows.
 
 ### `incremental_validity.csv`: one row per detection rule, model and scorer (20)
 
 Supports §4 (the Codex paragraph) and Table F1 (Codex columns). Columns as in
 `scorers/incremental_validity.csv`, with the same scorers and `description_word_count` as the
-baseline.
+baseline. The `original` rows are not reported.
 
 Recomputed by `reproduce.py`: partly, `delta_r2_adding_scorer` and `delta_r2_adding_baseline` in the
-10 `amended` rows.
+10 `amended` rows; not the `original` rows.
 
 ### `word_count.csv`: one row per detection rule and model (4)
 
 Supports §4 (word count predicts the Codex rate beyond the incumbent, +0.71 and +0.78) and Table F1
-(last row, Codex columns); the `original` rows support Appendix F's paragraph on the two Codex
-changes (+0.73 and +0.63). Description word count controlling for `conformance_overall`. `p_holm`
-is Holm across the two models within one detection rule.
+(last row, Codex columns); the `original` rows support Appendix F, "Two changes to the Codex
+replication" (+0.73 and +0.63). Description word count controlling for `conformance_overall`.
+`p_holm` is Holm across the two models within one detection rule.
 
-Recomputed by `reproduce.py`: partly, `partial_spearman` and `p_holm` in the two `amended` rows.
+Recomputed by `reproduce.py`: partly, `partial_spearman` and `p_holm` in the two `amended` rows; not
+the `original` rows.
 
 ### `transfer.csv`: one row per model (2)
 
@@ -147,11 +150,11 @@ rows.
 ### `codex_cmh.csv`: one row per detection rule, model and length, plus pooled rows (20)
 
 Supports §4 (on Codex, naming raises invocation by 0.34 and 0.16) and Table F3; the `original`
-pooled rows support Appendix F's paragraph on the two Codex changes (+0.33 and +0.24). Columns as in
-`claude_code_cmh.csv`, plus `detection`.
+pooled rows support Appendix F, "Two changes to the Codex replication" (+0.33 and +0.24). Columns
+as in `claude_code_cmh.csv`, plus `detection`.
 
 Recomputed by `reproduce.py`: partly, `rd_mh`, `ci_low`, `ci_high` and `cmh_p` in the two pooled
-`amended` rows.
+`amended` rows; not the `original` rows.
 
 ### `claude_code_by_level.csv`: one row per model and directness level (6)
 
