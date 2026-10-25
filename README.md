@@ -21,7 +21,7 @@ data/
   probe/       per-lineage starting score, plateau and refinement distance
 results/       derived tables: associations, incremental validity, CMH tests, MDE, decompositions
 stimuli/       the 25 description variants, the four selection prompts and the 517 skill versions
-analysis/      reproduce.py: recomputes the paper's statistics from data/ and checks results/
+analysis/      scripts that recompute the paper's statistics from data/ and check them; figures.py
 ```
 
 | Paper | Data | Results |
@@ -42,12 +42,24 @@ python3 analysis/reproduce.py              # about 3 seconds
 python3 analysis/reproduce.py --bootstrap  # adds the 10,000-draw lineage-bootstrap intervals
 ```
 
-`reproduce.py` uses only `data/`. It recomputes the incremental-validity tests (out-of-sample gain
-in R², and partial Spearman with Holm correction) for selection on both harnesses and for
-execution, the reverse word-count comparison, the transfer of the variant ordering between
-harnesses, and the naming-pair Mantel–Haenszel risk differences and CMH tests. It compares each
-value with `results/`, except the 34 Claude Code invocation rates, which it checks against
-`data/selection/claude_code_variants.csv`, and exits non-zero on any difference.
+Each script in `analysis/` uses only `data/`, recomputes one part of the paper, compares every
+value with the source named below, and exits non-zero on any difference. Run each the same way.
+`--bootstrap`, where a script takes it, adds the 10,000-draw bootstrap intervals, which take from
+under a minute to several minutes.
+
+| Script | Paper | Checked against |
+|---|---|---|
+| `reproduce.py` | §4 and §5: incremental validity (out-of-sample gain in R², and partial Spearman with Holm correction) for selection on both harnesses and for execution; the reverse word-count comparison; the transfer of the variant ordering between harnesses; the naming-pair Mantel–Haenszel risk differences and CMH tests | `results/scorers/`, `results/selection_*/` and `results/naming/`; the 34 Claude Code invocation rates against `data/selection/claude_code_variants.csv` |
+| `within_between.py` | §5, Figure 2, Appendix E and Table G3: each score's association with performance within lineages, between lineages, and between lineages with arms centred | `results/execution/within_between.csv`, `within_between_arm.csv` |
+| `clustered.py` | §5, Appendix E and Table G2: the execution associations with lineage-bootstrap intervals | `results/execution/clustered_associations.csv`, and the pooled rows of `associations.csv` |
+| `newline.py` | §5, Figure 1 (the † row) and Table G1: `skill-check` with its trailing-newline rule removed | `results/execution/sensitivity_newline.csv`, and the paper's counts (449 refined versions, 68 seeds) |
+| `probe.py` | §6 and Appendix H: the cheap probe (Tables H1 and H2, and the cost paragraph) | the paper, since no results table holds the probe |
+| `composition.py` | §3, §6 and Appendix C: the makeup of the execution corpus and how its lineages ended | `results/execution/corpus_composition.json`, `data/execution/lineage_termination.csv` |
+| `detectable_effect.py` | §7, Figure 1 (the grey bars) and Table E1: the smallest effect each test detects | `results/scorers/minimum_detectable_effect.csv` |
+
+`figures.py` draws Figures 1 and 2 from `results/` into `figures/`. It needs matplotlib, and its
+output matches the paper's when the Open Sans font is installed or given with `--fonts`.
+[results/README.md](results/README.md) says, for each result table, which script recomputes it.
 
 To test another scorer, score the skills in `stimuli/skill_versions/<run>/<artifact>/SKILL.md` (or
 `stimuli/descriptions/` for selection) and join on `run` and `artifact` (or `variant`).

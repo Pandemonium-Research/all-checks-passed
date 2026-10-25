@@ -2,7 +2,7 @@
 
 The tables behind the paper's statistics, derived from `data/`. Each entry gives what one row is,
 the row count, the part of the paper the table supports, the columns that need explaining, and
-whether `analysis/reproduce.py` recomputes it. Scorer prefixes, trivial baselines, body features,
+which script in `analysis/` recomputes it. Scorer prefixes, trivial baselines, body features,
 model short names and `directness` are defined in [DATA_DICTIONARY.md](../DATA_DICTIONARY.md).
 
 ## Conventions
@@ -197,7 +197,8 @@ and 21 scorers (all but `description_contains_release_note`).
 | `analysis_scope` | `pooled` (every eligible version), `family:<task>` (one task family), or `arm` (one `actor` and `refiner` pair; 8 arms) |
 | `p_holm` | Holm within one scope (one arm, for `arm` rows) and outcome |
 
-Recomputed by `reproduce.py`: no.
+Recomputed by `clustered.py`: partly, `partial_spearman` in the 18 pooled rows that
+`clustered_associations.csv` re-estimates.
 
 ### `clustered_associations.csv`: one row per outcome and scorer, plus one seed-quality row per outcome (20)
 
@@ -220,7 +221,8 @@ features controlling for `conformance_overall`, and the incumbent controlling fo
 In the `__lineage_mean_performance__` rows (`control` is `seed_quality`), only `between_lineage` is
 filled: the Spearman of lineage-mean performance with seed quality.
 
-Recomputed by `reproduce.py`: no.
+Recomputed by `clustered.py`: every row. With `--bootstrap` it also checks `cluster_ci_lo`,
+`cluster_ci_hi` and `cluster_excludes_zero`.
 
 ### `within_between.csv`: one row per outcome, scorer and control (72)
 
@@ -231,7 +233,7 @@ so the values repeat across the four controls. `status` is `estimated` or `uninf
 range)` (`sc_body`, which takes one value). `within_between_arm.csv` reproduces these values, and
 the paper cites that table.
 
-Recomputed by `reproduce.py`: no.
+Recomputed by `within_between.py`: every row.
 
 ### `within_between_arm.csv`: one row per outcome and scorer (28)
 
@@ -247,7 +249,8 @@ parts, as in `clustered_associations.csv`.
 | `arm_ci_low`, `arm_ci_high` | 95% interval of `between_lineage_within_arm` from 10,000 draws that resample lineages within each arm |
 | `arm_ci_draws` | Draws that gave an estimate (0 where there is none) |
 
-Recomputed by `reproduce.py`: no.
+Recomputed by `within_between.py`: every row. With `--bootstrap` it also checks `arm_ci_low`,
+`arm_ci_high` and `arm_ci_draws`.
 
 ### `sensitivity_newline.csv`: one row per outcome, baseline and scorer version (16)
 
@@ -256,7 +259,7 @@ Supports §5 (restoring the five points leaves no association), Figure 1 (the �
 points `skill-check` deducts for a missing trailing newline. `n_distinct` is the number of distinct
 scores; `delta_r2_adding_scorer` and `partial_spearman` are against `baseline`.
 
-Recomputed by `reproduce.py`: no.
+Recomputed by `newline.py`: every row.
 
 ### `corpus_composition.json`: the makeup of the execution corpus and how its lineages ended
 
@@ -274,7 +277,8 @@ rewrite) and Appendix C.
 
 The termination counts follow from `data/execution/lineage_termination.csv`.
 
-Recomputed by `reproduce.py`: no.
+Recomputed by `composition.py`: every value, together with
+`data/execution/lineage_termination.csv`.
 
 ## scorers/
 
@@ -323,7 +327,8 @@ Spearman the test detects with 80% power, two-sided.
 | `naive_mde_versions_alpha05`, `naive_mde_lineages_alpha05` | Execution only: the same approximation at α = 0.05 with n = versions or n = lineages, ignoring the clustering |
 | `abs_rho_ge_mde_alpha05` | The absolute `partial_spearman` is at least `mde_alpha05` |
 
-Recomputed by `reproduce.py`: no.
+Recomputed by `detectable_effect.py`: every row. The execution rows' `se`, `mde_alpha05`,
+`mde_holm_first_step` and `abs_rho_ge_mde_alpha05` need `--bootstrap`.
 
 ### `range_check.csv`: one row per scope and scorer (28)
 
@@ -360,7 +365,8 @@ Recomputed by `reproduce.py`: no.
 
 ## The §6 probe
 
-No table in `results/` holds the cheap probe. To compute Table H1's R² values from
+No table in `results/` holds the cheap probe. `analysis/probe.py` recomputes Tables H1 and H2 and
+the cost paragraph and checks them against the paper. To compute Table H1's R² values from
 `data/probe/impact_log_deltas.csv`, take, for each `refiner` and `actor` arm, the rows with
 `rescored = True` and compute the Pearson correlation between `v0_train_new` and
 `delta_train_new`. R² is its square.
