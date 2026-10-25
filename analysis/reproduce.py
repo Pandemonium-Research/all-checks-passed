@@ -177,7 +177,7 @@ def mh_risk_difference(strata) -> tuple[float, float, float]:
     return float(rd), float(rd) - half, float(rd) + half
 
 
-def cmh_p(strata) -> float:
+def cmh_statistic(strata) -> float:
     num_, var = 0.0, 0.0
     for a, n1, c, n0 in strata:
         n, m1 = n1 + n0, a + c
@@ -185,7 +185,11 @@ def cmh_p(strata) -> float:
             continue
         num_ += a - n1 * m1 / n
         var += n1 * n0 * m1 * (n - m1) / (n * n * (n - 1))
-    return float(chi2.sf(num_ * num_ / var, 1)) if var > 0 else float("nan")
+    return num_ * num_ / var if var > 0 else float("nan")
+
+
+def cmh_p(strata) -> float:
+    return float(chi2.sf(cmh_statistic(strata), 1))
 
 
 # ----------------------------------------------------------------------------- checking
@@ -259,6 +263,33 @@ def rates_from(cells, field) -> dict:
     return {k: k_n[0] / k_n[1] for k, k_n in counts.items()}
 
 
+def codex_selection(chk: Checker, cx_cells: list[dict], detection: str) -> dict:
+    """Incremental validity and the reverse word-count comparison on Codex CLI, for one detection
+    rule (`amended` or `original`); returns the invocation rates."""
+    cx_rates = rates_from(cx_cells, f"triggered_{detection}")
+    exp_p = [r for r in read(RESULTS / "selection_codex/partial_spearman.csv") if r["detection"] == detection]
+    exp_i = [r for r in read(RESULTS / "selection_codex/incremental_validity.csv") if r["detection"] == detection]
+    exp_w = {r["actor"]: r for r in read(RESULTS / "selection_codex/word_count.csv") if r["detection"] == detection}
+    word = []
+    for actor in ACTORS:
+        rows = selection_rows(cx_rates, actor)
+        scope = f"invocation:{actor}"
+        p, i = family(rows, "outcome_invocation_rate", SELECTION_SCORERS, SELECTION_BASELINES, "variant")
+        check_family(chk, f"codex {detection} {actor}", p, i, [r for r in exp_p if r["scope"] == scope],
+                     [r for r in exp_i if r["scope"] == scope])
+        sub = complete(rows, "description_word_count", "outcome_invocation_rate", "conformance_overall")
+        rho = partial_spearman(*(np.array([num(r[c]) for r in sub]) for c in
+                                 ("description_word_count", "outcome_invocation_rate", "conformance_overall")))
+        word.append({"actor": actor, "partial_spearman": rho, "p_value": t_pvalue(rho, len(sub)), "p_holm": None})
+    holm(word)
+    for row in word:
+        chk.close(f"codex {detection} {row['actor']} word count | incumbent rho", row["partial_spearman"],
+                  exp_w[row["actor"]]["partial_spearman"], 1.5e-4)
+        chk.close(f"codex {detection} {row['actor']} word count | incumbent p_holm", row["p_holm"],
+                  exp_w[row["actor"]]["p_holm"], 1e-5)
+    return cx_rates
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--bootstrap", action="store_true")
@@ -289,32 +320,13 @@ def main() -> None:
 
     # Selection, Codex CLI (amended detection, as in the paper).
     cx_cells = read(DATA / "selection/codex_cells.csv")
-    cx_rates = rates_from(cx_cells, "triggered_amended")
-    exp_p = [r for r in read(RESULTS / "selection_codex/partial_spearman.csv") if r["detection"] == "amended"]
-    exp_i = [r for r in read(RESULTS / "selection_codex/incremental_validity.csv") if r["detection"] == "amended"]
-    exp_w = {r["actor"]: r for r in read(RESULTS / "selection_codex/word_count.csv") if r["detection"] == "amended"}
+    cx_rates = codex_selection(chk, cx_cells, "amended")
     exp_t = {r["actor"]: r for r in read(RESULTS / "selection_codex/transfer.csv")}
-    word = []
     for actor in ACTORS:
-        rows = selection_rows(cx_rates, actor)
-        scope = f"invocation:{actor}"
-        p, i = family(rows, "outcome_invocation_rate", SELECTION_SCORERS, SELECTION_BASELINES, "variant")
-        check_family(chk, f"codex {actor}", p, i, [r for r in exp_p if r["scope"] == scope],
-                     [r for r in exp_i if r["scope"] == scope])
-        sub = complete(rows, "description_word_count", "outcome_invocation_rate", "conformance_overall")
-        rho = partial_spearman(*(np.array([num(r[c]) for r in sub]) for c in
-                                 ("description_word_count", "outcome_invocation_rate", "conformance_overall")))
-        word.append({"actor": actor, "partial_spearman": rho, "p_value": t_pvalue(rho, len(sub)), "p_holm": None})
         variants = sorted(v for a, v in cx_rates if a == actor)
         transfer = spearmanr([cx_rates[(actor, v)] for v in variants], [cc_rates[(actor, v)] for v in variants])
         chk.close(f"codex {actor} transfer rho", float(transfer.statistic),
                   exp_t[actor]["spearman_codex_vs_claude_code"], 1.5e-4)
-    holm(word)
-    for row in word:
-        chk.close(f"codex {row['actor']} word count | incumbent rho", row["partial_spearman"],
-                  exp_w[row["actor"]]["partial_spearman"], 1.5e-4)
-        chk.close(f"codex {row['actor']} word count | incumbent p_holm", row["p_holm"],
-                  exp_w[row["actor"]]["p_holm"], 1e-5)
 
     # Execution: 465 eligible versions, lineage as the unit.
     versions = execution_versions()
