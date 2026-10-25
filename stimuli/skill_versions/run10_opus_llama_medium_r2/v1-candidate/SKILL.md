@@ -1,0 +1,149 @@
+---
+name: docstring-api
+description: Use this skill when adding Google-style API docstrings to named public Python functions in this project — it defines the required docstring shape (summary line, Args/Returns/Raises/Examples), the mandatory runnable doctest, and the exact form of the returned output, without changing any code.
+---
+
+# API docstring notes
+
+## What you return
+
+Return only the complete definitions of the named public functions, in the order they were named.
+Each definition is reproduced verbatim except that a docstring has been inserted as the first
+thing inside the function.
+
+- The source module is already correct. Do not modify executable code or signatures.
+- Do not document unrelated functions, helper functions, private functions, or classes, even
+  when they look like they need it. It is easy to expand the task while trying to be helpful.
+- Keep each full executable body. Never replace a body with `...`, `pass`, or a comment.
+- Emit raw Python only. No Markdown code fences (` ``` `), no headings, no prose before, between,
+  or after the definitions.
+
+## The shape of one docstring
+
+Every named function gets a docstring built on this shape. The illustration below shows placement
+and spacing only; write real content drawn from the actual signature and body.
+
+```
+def convert_ratio(numerator: int, denominator: int) -> float:
+    """Convert two integers into their quotient as a float.
+
+    Args:
+        numerator (int): Value divided into parts.
+        denominator (int): Number of parts; must not be zero.
+
+    Returns:
+        float: The quotient of the two arguments.
+
+    Raises:
+        ZeroDivisionError: If ``denominator`` is zero.
+
+    Examples:
+        >>> convert_ratio(3, 4)
+        0.75
+    """
+    if denominator == 0:
+        raise ZeroDivisionError("denominator must be non-zero")
+    return numerator / denominator
+```
+
+(The fences above delimit the illustration for you. Your own output contains no fences.)
+
+Mechanics that this shape encodes:
+
+- Triple double quotes. The docstring is the first statement in the function, before any
+  executable line.
+- Indent the docstring to match the function body; indent section entries one further level.
+- The closing `"""` sits on its own line. No blank line immediately before it, and no blank line
+  between it and the first executable statement.
+- Exactly one blank line between the summary and the first section, and between each pair of
+  sections. Never two.
+- Applicable sections appear in this order and no other: `Args:` → `Returns:` → `Raises:` →
+  `Examples:`. Omit an inapplicable section rather than inventing content for it.
+- If the docstring contains a backslash, make it a raw docstring (`r"""`).
+
+## Summary line
+
+The summary text starts on the same line as the opening `"""`, with no space and no newline
+between them. Writing `"""` and then dropping to the next line is the single most common way this
+task is failed.
+
+- Wrong: `"""` followed by a newline, then `    Check whether the value is a string.`
+- Right: `"""Check whether the value is a string.`
+
+The summary is one imperative line. Start it with a capital letter and end it with `.`, `!`, or
+`?`. Do not restate the signature. Its first word must be a capitalized form of one word from
+this set:
+
+`add|build|check|clip|compress|convert|count|create|decode|detect|encode|format|generate|identify|interpret|iterate|join|normalize|parse|remove|return|reverse|test|transform|validate`
+
+## Args
+
+`Args:` is an exact inventory, not a selective explanation.
+
+- List every parameter in signature order, excluding `self` and `cls`.
+- Use exactly the signature's parameter names. Add no names that are not in the signature, and
+  omit none that are.
+- Annotated parameter: `name (annotation): description`, with the annotation text copied exactly
+  from the signature, including `Optional[...]`, `List[...]`, and so on.
+- Unannotated parameter: `name: description`. Do not invent a type.
+- The code annotations are not a substitute for the type text here; write the types out even
+  though the signature already carries them.
+- Describe what the value means, rather than restating its name.
+
+## Returns
+
+- If the body returns a value, write `Returns:` with `type: description`, where `type` matches
+  the return annotation exactly.
+- If the function returns no value, omit the section entirely.
+
+## Raises
+
+`Raises:` is also an exact inventory, and it is easy to skip by accident. Scan the whole body for
+`raise` statements before you decide.
+
+- One entry per exception raised explicitly in that function's body, as
+  `ExceptionType: condition`.
+- Include exceptions raised from inside `if`, `try`, `except`, or nested blocks — anywhere a
+  literal `raise` appears in the body.
+- Do not list exceptions the body does not explicitly raise, including ones that a function it
+  calls might raise.
+- Say what condition triggers the error, rather than restating the exception name.
+- If the body contains no `raise` statement, omit the section.
+
+## Examples
+
+Every named public function needs its own `Examples:` section with at least one runnable `>>>`
+doctest. A function with no doctest is a failed entry, and so is a doctest written in the wrong
+place.
+
+- The `Examples:` block lives **inside** the docstring, after `Raises:` and above the closing
+  `"""`. A `>>>` line that appears after the function body, after the closing quotes, or at module
+  level does not count and breaks the file.
+- No `>>>` line may appear anywhere outside a docstring.
+- Doctests are executable, not illustrative. Each must run successfully, and the expected output
+  written under it must match the real output character for character — including quotes on
+  strings, `True`/`False` capitalization, and float formatting.
+- Choose a deterministic call. When the concrete result varies or is unwieldy, assert a
+  deterministic property of it instead (for example, its type, its length, or a comparison that
+  prints `True`).
+- Every named function needs one, including short one-line functions and functions that mostly
+  delegate to a helper.
+
+## Before you finish
+
+Reread each definition you are about to return and confirm:
+
+1. Every named function is present, in the order listed, and nothing extra is.
+2. Each signature and each executable statement is unchanged; no body was shortened.
+3. Each docstring's summary begins immediately after `"""` on the same line, starts with an
+   approved capitalized verb, and ends with `.`, `!`, or `?`.
+4. `Args:` names match the signature exactly; annotations are copied exactly.
+5. `Returns:` is present exactly when a value is returned; `Raises:` matches the body's `raise`
+   statements exactly.
+6. Every function has an `Examples:` block inside its docstring, and every doctest would pass.
+7. Section order and single-blank-line spacing hold throughout.
+8. The output is bare Python that parses — no fences, no commentary.
+
+Where one rule appears to pull against another, prefer the exact evidence in the signature and
+body over any guess about names, types, values, or exceptions, and prefer omitting a section over
+inventing its contents.
