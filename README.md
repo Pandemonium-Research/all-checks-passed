@@ -7,9 +7,9 @@ Symposium, Fall 2026 (non-archival).
 The paper asks whether published static scores for agent skills predict either step of using a
 skill, selection or execution, better than trivial text baselines such as description word count.
 This release holds the per-cell and per-version data behind every statistic in the paper, the
-derived result tables, the stimuli and the text of every skill version scored. Column definitions are in
-[DATA_DICTIONARY.md](DATA_DICTIONARY.md).
-Each result table, and the claim it supports, is described in [results/README.md](results/README.md).
+derived result tables, the stimuli and the text of every skill version scored. Column definitions
+are in [DATA_DICTIONARY.md](DATA_DICTIONARY.md); each result table, and the claim it supports, is
+described in [results/README.md](results/README.md).
 
 ## Contents
 
@@ -26,10 +26,10 @@ analysis/      scripts that recompute the paper's statistics from data/ and chec
 
 | Paper | Data | Results |
 |---|---|---|
-| §4 Selection, Claude Code (Figure 1, left; Appendix F) | `data/selection/claude_code_cells.csv`, `claude_code_variants.csv`, `independent_scores.csv` | `results/selection_claude_code/`, `results/scorers/` |
-| §4 Naming pairs (Appendix F) | `data/naming/claude_code_cells.csv`, `claude_code_counts.csv`; Codex rows in `data/selection/codex_cells.csv` (block `e1`) | `results/naming/` |
+| §4 Selection, Claude Code (Figure 1, left; Appendix F) | `data/selection/claude_code_*.csv`, `independent_scores.csv` | `results/selection_claude_code/`, `results/scorers/` |
+| §4 Naming pairs (Appendix F) | `data/naming/`; Codex: `data/selection/codex_cells.csv` (block `e1`) | `results/naming/` |
 | §4 Second harness, Codex CLI (Appendix F) | `data/selection/codex_cells.csv` | `results/selection_codex/` |
-| §5 Execution (Figures 1 right and 2; Appendix G) | `data/execution/versions.csv`, `independent_scores.csv`; texts in `stimuli/skill_versions/` | `results/execution/`, `results/scorers/` |
+| §5 Execution (Figures 1 right and 2; Appendix G) | `data/execution/versions.csv`, `independent_scores.csv`; `stimuli/skill_versions/` | `results/execution/`, `results/scorers/` |
 | §6 Cheap probe (Appendix H) | `data/probe/`, `data/execution/lineage_termination.csv` | `results/execution/corpus_composition.json` |
 | §7 Power (Appendix E) | | `results/scorers/minimum_detectable_effect.csv` |
 | Appendix A, validator version | | `results/scorers/validator_version_check.csv` |
@@ -42,31 +42,34 @@ python3 analysis/reproduce.py              # about 3 seconds
 python3 analysis/reproduce.py --bootstrap  # adds the 10,000-draw lineage-bootstrap intervals
 ```
 
-Each script in `analysis/` uses only `data/`, recomputes one part of the paper, compares every
-value with the source named below, and exits non-zero on any difference. Run each the same way.
-`--bootstrap`, where a script takes it, adds the 10,000-draw bootstrap intervals, which take from
-under a minute to several minutes.
+Each script in `analysis/` uses only `data/`, recomputes one part of the paper and exits non-zero
+on any difference. Run each the same way. `--bootstrap`, where a script takes it, adds the
+10,000-draw bootstrap intervals, which take from under a minute to several minutes.
 
-| Script | Paper | Checked against |
+| Script | Recomputes | Paper |
 |---|---|---|
-| `reproduce.py` | §4 and §5: incremental validity (out-of-sample gain in R², and partial Spearman with Holm correction) for selection on both harnesses and for execution; the reverse word-count comparison; the transfer of the variant ordering between harnesses; the naming-pair Mantel–Haenszel risk differences and CMH tests | `results/scorers/`, `results/selection_*/` and `results/naming/`; the 34 Claude Code invocation rates against `data/selection/claude_code_variants.csv` |
-| `associations.py` | §4, §5 and Appendix F: each of the incumbent's checks and our text features against selection and execution, including the description-length check and the reverse comparison | `results/selection_claude_code/associations.csv`, `results/execution/associations.csv` |
-| `incumbent_validity.py` | §4 and Table F1: the incumbent's nested-model comparison with each trivial baseline | `results/selection_claude_code/incremental_validity_incumbent.csv` |
-| `codex.py` | §4, Appendices D and F: the Codex CLI results under the original detection rule, block rates (no-skill baseline and positive control) and the listing of malformed names | `results/selection_codex/` |
-| `naming.py` | §4, Appendix F and Table F3: every naming-pair stratum on both harnesses, the gaps by directness level, the drift anchors and the registered decision rule | `results/naming/`, `data/naming/claude_code_counts.csv`, and the paper |
-| `within_between.py` | §5, Figure 2, Appendix E and Table G3: each score's association with performance within lineages, between lineages, and between lineages with arms centred | `results/execution/within_between.csv`, `within_between_arm.csv` |
-| `clustered.py` | §5, Appendix E and Table G2: the execution associations with lineage-bootstrap intervals | `results/execution/clustered_associations.csv`, and the pooled rows of `associations.csv` |
-| `newline.py` | §5, Figure 1 (the † row) and Table G1: `skill-check` with its trailing-newline rule removed | `results/execution/sensitivity_newline.csv`, and the paper's counts (449 refined versions, 68 seeds) |
-| `probe.py` | §6 and Appendix H: the cheap probe (Tables H1 and H2, and the cost paragraph) | the paper, since no results table holds the probe |
-| `composition.py` | §3, §6 and Appendix C: the makeup of the execution corpus and how its lineages ended | `results/execution/corpus_composition.json`, `data/execution/lineage_termination.csv` |
-| `detectable_effect.py` | §7, Figure 1 (the grey bars) and Table E1: the smallest effect each test detects | `results/scorers/minimum_detectable_effect.csv` |
-| `range_check.py` | §5, Appendix F, Table G1 and Figure 1: how many distinct values each score takes | `results/scorers/range_check.csv` |
+| `reproduce.py` | Incremental validity, the reverse word-count comparison, the cross-harness transfer, the naming-pair CMH tests | §4, §5 |
+| `associations.py` | Each incumbent check and text feature against selection and execution | §4, §5, Appendix F |
+| `incumbent_validity.py` | The incumbent's nested-model comparison with each trivial baseline | §4, Table F1 |
+| `codex.py` | Codex results under the original detection rule; block rates; malformed-name listing | §4, Appendices D and F |
+| `naming.py` | Every naming-pair stratum, the gaps by directness level, the drift anchors | §4, Appendix F, Table F3 |
+| `within_between.py` | Associations within lineages, between lineages, and with arms centred | §5, Figure 2, Appendix E, Table G3 |
+| `clustered.py` | Execution associations with lineage-bootstrap intervals | §5, Appendix E, Table G2 |
+| `newline.py` | `skill-check` with its trailing-newline rule removed | §5, Figure 1, Table G1 |
+| `probe.py` | The cheap probe: Tables H1 and H2 and the cost paragraph | §6, Appendix H |
+| `composition.py` | The makeup of the execution corpus and how its lineages ended | §3, §6, Appendix C |
+| `detectable_effect.py` | The smallest effect each test detects | §7, Figure 1, Table E1 |
+| `range_check.py` | How many distinct values each score takes | §5, Appendix F, Table G1, Figure 1 |
+
+Each script checks its values against `results/`; [results/README.md](results/README.md) names the
+script for each table. The exceptions: `probe.py` checks against the paper, since no results table
+holds the probe, and `reproduce.py` checks the 34 Claude Code invocation rates against
+`data/selection/claude_code_variants.csv`. Two tables record runs of the scoring tools themselves
+and cannot be recomputed from `data/`: `results/scorers/determinism.csv` and
+`validator_version_check.csv`.
 
 `figures.py` draws Figures 1 and 2 from `results/` into `figures/`. It needs matplotlib, and its
 output matches the paper's when the Open Sans font is installed or given with `--fonts`.
-[results/README.md](results/README.md) says, for each result table, which script recomputes it.
-Two tables record runs of the scoring tools themselves and cannot be recomputed from `data/`:
-`results/scorers/determinism.csv` and `validator_version_check.csv`.
 
 To test another scorer, score the skills in `stimuli/skill_versions/<run>/<artifact>/SKILL.md` (or
 `stimuli/descriptions/` for selection) and join on `run` and `artifact` (or `variant`).
