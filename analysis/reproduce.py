@@ -110,6 +110,15 @@ def cv_r2(x: np.ndarray, y: np.ndarray, groups: np.ndarray) -> float:
 
 
 def lineage_bootstrap(x, y, z, groups) -> tuple[float, float] | None:
+    draws = bootstrap_draws(x, y, z, groups)
+    if not draws:
+        return None
+    lo, hi = np.percentile(draws, [2.5, 97.5])
+    return float(lo), float(hi)
+
+
+def bootstrap_draws(x, y, z, groups) -> list[float]:
+    """Partial Spearman over resamples of whole lineages, drawn with replacement."""
     lineages: dict[str, list[int]] = defaultdict(list)
     for i, g in enumerate(groups):
         lineages[str(g)].append(i)
@@ -121,10 +130,7 @@ def lineage_bootstrap(x, y, z, groups) -> tuple[float, float] | None:
         estimate = partial_spearman(x[idx], y[idx], z[idx])
         if estimate is not None and not np.isnan(estimate):
             draws.append(estimate)
-    if not draws:
-        return None
-    lo, hi = np.percentile(draws, [2.5, 97.5])
-    return float(lo), float(hi)
+    return draws
 
 
 def complete(rows, *cols):
@@ -185,8 +191,8 @@ def cmh_p(strata) -> float:
 # ----------------------------------------------------------------------------- checking
 
 class Checker:
-    def __init__(self) -> None:
-        self.passed, self.failed = 0, []
+    def __init__(self, source: str = "results/") -> None:
+        self.passed, self.failed, self.source = 0, [], source
 
     def close(self, label: str, got, expected: str, tol: float) -> None:
         exp = num(expected)
@@ -197,7 +203,13 @@ class Checker:
         if ok:
             self.passed += 1
         else:
-            self.failed.append(f"{label}: got {got!r}, results/ has {expected!r}")
+            self.failed.append(f"{label}: got {got!r}, {self.source} has {expected!r}")
+
+    def same(self, label: str, got, expected: str) -> None:
+        if str(got) == expected:
+            self.passed += 1
+        else:
+            self.failed.append(f"{label}: got {got!r}, {self.source} has {expected!r}")
 
 
 def check_family(chk, label, partial, incremental, exp_partial, exp_incremental):
@@ -228,6 +240,13 @@ def selection_rows(rates: dict, actor: str) -> list[dict]:
             rows.append({**scores[r["variant"]], **r,
                          "outcome_invocation_rate": rates[(actor, r["variant"])]})
     return rows
+
+
+def execution_versions() -> list[dict]:
+    """The 465 analysed versions, each with its incumbent, baselines and independent scores."""
+    scores = {(r["run"], r["artifact"]): r for r in read(DATA / "execution/independent_scores.csv")}
+    return [{**scores[(r["run"], r["artifact"])], **r} for r in read(DATA / "execution/versions.csv")
+            if r["analysis_eligible"] == "True"]
 
 
 def rates_from(cells, field) -> dict:
@@ -298,9 +317,7 @@ def main() -> None:
                   exp_w[row["actor"]]["p_holm"], 1e-5)
 
     # Execution: 465 eligible versions, lineage as the unit.
-    scores = {(r["run"], r["artifact"]): r for r in read(DATA / "execution/independent_scores.csv")}
-    versions = [{**scores[(r["run"], r["artifact"])], **r} for r in read(DATA / "execution/versions.csv")
-                if r["analysis_eligible"] == "True"]
+    versions = execution_versions()
     exp_p, exp_i = read(RESULTS / "scorers/partial_spearman.csv"), read(RESULTS / "scorers/incremental_validity.csv")
     for outcome, scope in (("outcome_heldout_mean", "execution:held-out"), ("outcome_train_mean", "execution:train")):
         rows = [r for r in versions if num(r[outcome]) is not None]
