@@ -1,0 +1,43 @@
+{
+  "composition": {
+    "all_versions": {
+      "seed": 68,
+      "rejected_candidate": 345,
+      "accepted": 52,
+      "accepted_candidate_duplicate": 52
+    },
+    "train_eligible": {
+      "seed": 68,
+      "rejected_candidate": 345,
+      "accepted": 52
+    },
+    "heldout": {
+      "seed": 68,
+      "accepted": 52
+    },
+    "n_all": 517,
+    "n_train": 465,
+    "n_heldout": 120
+  },
+  "termination": {
+    "n_lineages": 68,
+    "quiet_tail_distribution": {
+      "1": 1,
+      "2": 4,
+      "3": 7,
+      "4": 7,
+      "5": 27,
+      "6": 22
+    },
+    "accepted_improvements_distribution": {
+      "0": 24,
+      "1": 37,
+      "2": 6,
+      "3": 1
+    },
+    "at_least_1_quiet": 68,
+    "at_least_2_quiet": 67,
+    "at_least_4_quiet": 56,
+    "hit_iteration_cap": 64
+  }
+}

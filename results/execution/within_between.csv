@@ -1,0 +1,73 @@
+corpus,scope,actor,outcome,scorer,control,n,n_lineages,within_lineage,between_lineage,status
+A,execution:held-out,,outcome_heldout_mean,sc_score,description_word_count,120,68,-0.7732,0.4054,estimated
+A,execution:held-out,,outcome_heldout_mean,sc_score,body_token_count,120,68,-0.7732,0.4054,estimated
+A,execution:held-out,,outcome_heldout_mean,sc_score,has_code_block,120,68,-0.7732,0.4054,estimated
+A,execution:held-out,,outcome_heldout_mean,sc_score,has_numbered_steps,120,68,-0.7732,0.4054,estimated
+A,execution:held-out,,outcome_heldout_mean,sc_body,description_word_count,120,68,,,uninformative (low range)
+A,execution:held-out,,outcome_heldout_mean,sc_body,body_token_count,120,68,,,uninformative (low range)
+A,execution:held-out,,outcome_heldout_mean,sc_body,has_code_block,120,68,,,uninformative (low range)
+A,execution:held-out,,outcome_heldout_mean,sc_body,has_numbered_steps,120,68,,,uninformative (low range)
+A,execution:held-out,,outcome_heldout_mean,sv_information_density,description_word_count,120,68,0.4101,-0.2234,estimated
+A,execution:held-out,,outcome_heldout_mean,sv_information_density,body_token_count,120,68,0.4101,-0.2234,estimated
+A,execution:held-out,,outcome_heldout_mean,sv_information_density,has_code_block,120,68,0.4101,-0.2234,estimated
+A,execution:held-out,,outcome_heldout_mean,sv_information_density,has_numbered_steps,120,68,0.4101,-0.2234,estimated
+A,execution:held-out,,outcome_heldout_mean,sv_instruction_specificity,description_word_count,120,68,0.8713,-0.3829,estimated
+A,execution:held-out,,outcome_heldout_mean,sv_instruction_specificity,body_token_count,120,68,0.8713,-0.3829,estimated
+A,execution:held-out,,outcome_heldout_mean,sv_instruction_specificity,has_code_block,120,68,0.8713,-0.3829,estimated
+A,execution:held-out,,outcome_heldout_mean,sv_instruction_specificity,has_numbered_steps,120,68,0.8713,-0.3829,estimated
+A,execution:held-out,,outcome_heldout_mean,sv_imperative_ratio,description_word_count,120,68,0.4181,-0.2081,estimated
+A,execution:held-out,,outcome_heldout_mean,sv_imperative_ratio,body_token_count,120,68,0.4181,-0.2081,estimated
+A,execution:held-out,,outcome_heldout_mean,sv_imperative_ratio,has_code_block,120,68,0.4181,-0.2081,estimated
+A,execution:held-out,,outcome_heldout_mean,sv_imperative_ratio,has_numbered_steps,120,68,0.4181,-0.2081,estimated
+A,execution:held-out,,outcome_heldout_mean,ss_total,description_word_count,120,68,0.2429,0.19,estimated
+A,execution:held-out,,outcome_heldout_mean,ss_total,body_token_count,120,68,0.2429,0.19,estimated
+A,execution:held-out,,outcome_heldout_mean,ss_total,has_code_block,120,68,0.2429,0.19,estimated
+A,execution:held-out,,outcome_heldout_mean,ss_total,has_numbered_steps,120,68,0.2429,0.19,estimated
+A,execution:held-out,,outcome_heldout_mean,ss_structure_progressive_disclosure,description_word_count,120,68,-0.4137,0.2261,estimated
+A,execution:held-out,,outcome_heldout_mean,ss_structure_progressive_disclosure,body_token_count,120,68,-0.4137,0.2261,estimated
+A,execution:held-out,,outcome_heldout_mean,ss_structure_progressive_disclosure,has_code_block,120,68,-0.4137,0.2261,estimated
+A,execution:held-out,,outcome_heldout_mean,ss_structure_progressive_disclosure,has_numbered_steps,120,68,-0.4137,0.2261,estimated
+A,execution:held-out,,outcome_heldout_mean,ss_instruction_quality,description_word_count,120,68,0.7794,-0.4321,estimated
+A,execution:held-out,,outcome_heldout_mean,ss_instruction_quality,body_token_count,120,68,0.7794,-0.4321,estimated
+A,execution:held-out,,outcome_heldout_mean,ss_instruction_quality,has_code_block,120,68,0.7794,-0.4321,estimated
+A,execution:held-out,,outcome_heldout_mean,ss_instruction_quality,has_numbered_steps,120,68,0.7794,-0.4321,estimated
+A,execution:held-out,,outcome_heldout_mean,conformance_overall,description_word_count,120,68,-0.0692,0.3271,estimated
+A,execution:held-out,,outcome_heldout_mean,conformance_overall,body_token_count,120,68,-0.0692,0.3271,estimated
+A,execution:held-out,,outcome_heldout_mean,conformance_overall,has_code_block,120,68,-0.0692,0.3271,estimated
+A,execution:held-out,,outcome_heldout_mean,conformance_overall,has_numbered_steps,120,68,-0.0692,0.3271,estimated
+A,execution:train,,outcome_train_mean,sc_score,description_word_count,465,68,-0.2718,-0.0189,estimated
+A,execution:train,,outcome_train_mean,sc_score,body_token_count,465,68,-0.2718,-0.0189,estimated
+A,execution:train,,outcome_train_mean,sc_score,has_code_block,465,68,-0.2718,-0.0189,estimated
+A,execution:train,,outcome_train_mean,sc_score,has_numbered_steps,465,68,-0.2718,-0.0189,estimated
+A,execution:train,,outcome_train_mean,sc_body,description_word_count,465,68,,,uninformative (low range)
+A,execution:train,,outcome_train_mean,sc_body,body_token_count,465,68,,,uninformative (low range)
+A,execution:train,,outcome_train_mean,sc_body,has_code_block,465,68,,,uninformative (low range)
+A,execution:train,,outcome_train_mean,sc_body,has_numbered_steps,465,68,,,uninformative (low range)
+A,execution:train,,outcome_train_mean,sv_information_density,description_word_count,465,68,0.0999,0.117,estimated
+A,execution:train,,outcome_train_mean,sv_information_density,body_token_count,465,68,0.0999,0.117,estimated
+A,execution:train,,outcome_train_mean,sv_information_density,has_code_block,465,68,0.0999,0.117,estimated
+A,execution:train,,outcome_train_mean,sv_information_density,has_numbered_steps,465,68,0.0999,0.117,estimated
+A,execution:train,,outcome_train_mean,sv_instruction_specificity,description_word_count,465,68,0.3156,-0.1496,estimated
+A,execution:train,,outcome_train_mean,sv_instruction_specificity,body_token_count,465,68,0.3156,-0.1496,estimated
+A,execution:train,,outcome_train_mean,sv_instruction_specificity,has_code_block,465,68,0.3156,-0.1496,estimated
+A,execution:train,,outcome_train_mean,sv_instruction_specificity,has_numbered_steps,465,68,0.3156,-0.1496,estimated
+A,execution:train,,outcome_train_mean,sv_imperative_ratio,description_word_count,465,68,0.1103,0.0991,estimated
+A,execution:train,,outcome_train_mean,sv_imperative_ratio,body_token_count,465,68,0.1103,0.0991,estimated
+A,execution:train,,outcome_train_mean,sv_imperative_ratio,has_code_block,465,68,0.1103,0.0991,estimated
+A,execution:train,,outcome_train_mean,sv_imperative_ratio,has_numbered_steps,465,68,0.1103,0.0991,estimated
+A,execution:train,,outcome_train_mean,ss_total,description_word_count,465,68,-0.0218,0.0201,estimated
+A,execution:train,,outcome_train_mean,ss_total,body_token_count,465,68,-0.0218,0.0201,estimated
+A,execution:train,,outcome_train_mean,ss_total,has_code_block,465,68,-0.0218,0.0201,estimated
+A,execution:train,,outcome_train_mean,ss_total,has_numbered_steps,465,68,-0.0218,0.0201,estimated
+A,execution:train,,outcome_train_mean,ss_structure_progressive_disclosure,description_word_count,465,68,-0.2765,0.0784,estimated
+A,execution:train,,outcome_train_mean,ss_structure_progressive_disclosure,body_token_count,465,68,-0.2765,0.0784,estimated
+A,execution:train,,outcome_train_mean,ss_structure_progressive_disclosure,has_code_block,465,68,-0.2765,0.0784,estimated
+A,execution:train,,outcome_train_mean,ss_structure_progressive_disclosure,has_numbered_steps,465,68,-0.2765,0.0784,estimated
+A,execution:train,,outcome_train_mean,ss_instruction_quality,description_word_count,465,68,0.2963,0.0577,estimated
+A,execution:train,,outcome_train_mean,ss_instruction_quality,body_token_count,465,68,0.2963,0.0577,estimated
+A,execution:train,,outcome_train_mean,ss_instruction_quality,has_code_block,465,68,0.2963,0.0577,estimated
+A,execution:train,,outcome_train_mean,ss_instruction_quality,has_numbered_steps,465,68,0.2963,0.0577,estimated
+A,execution:train,,outcome_train_mean,conformance_overall,description_word_count,465,68,-0.0054,0.1173,estimated
+A,execution:train,,outcome_train_mean,conformance_overall,body_token_count,465,68,-0.0054,0.1173,estimated
+A,execution:train,,outcome_train_mean,conformance_overall,has_code_block,465,68,-0.0054,0.1173,estimated
+A,execution:train,,outcome_train_mean,conformance_overall,has_numbered_steps,465,68,-0.0054,0.1173,estimated

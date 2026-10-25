@@ -1,0 +1,5 @@
+detection,actor,n,partial_spearman,p_value,p_holm
+amended,qwen,17,0.7062,0.002231,0.002231
+amended,deepseek,17,0.7752,0.000419,0.000838
+original,qwen,17,0.7305,0.00131,0.00262
+original,deepseek,17,0.629,0.009049,0.009049

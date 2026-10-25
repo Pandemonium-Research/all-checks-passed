@@ -1,0 +1,9 @@
+actor,variant,cells,listed,invoked
+qwen,g-d25-nameformat,24,24,16
+qwen,g-d70-nameformat,24,24,18
+qwen,g-weak-nameformat,24,24,0
+qwen,p-name-format,24,24,14
+deepseek,g-d25-nameformat,24,24,24
+deepseek,g-d70-nameformat,24,24,24
+deepseek,g-weak-nameformat,24,24,20
+deepseek,p-name-format,24,24,24

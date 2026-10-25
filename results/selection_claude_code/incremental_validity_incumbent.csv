@@ -1,0 +1,11 @@
+scope,baseline,n,n_groups,r2_baseline_only,r2_conformance_only,r2_both,delta_r2_adding_conformance,delta_r2_adding_baseline
+invocation:deepseek,description_word_count,17,17,0.2573,-0.0822,0.1795,-0.0779,0.2616
+invocation:deepseek,description_contains_release_note,17,17,0.8514,-0.0822,0.8369,-0.0144,0.9191
+invocation:qwen,description_word_count,17,17,0.6267,0.049,0.6052,-0.0215,0.5561
+invocation:qwen,description_contains_release_note,17,17,0.5018,0.049,0.4983,-0.0034,0.4493
+execution:held-out,has_numbered_steps,120,68,0.1696,-0.3116,-0.2094,-0.379,0.1021
+execution:held-out,body_line_count,120,68,0.0772,-0.3116,-0.1211,-0.1983,0.1905
+execution:held-out,has_code_block,120,68,0.1058,-0.3116,0.0016,-0.1042,0.3132
+execution:train,has_numbered_steps,465,68,0.1631,0.0019,0.1658,0.0028,0.1639
+execution:train,body_line_count,465,68,0.1081,0.0019,0.1069,-0.0012,0.105
+execution:train,has_code_block,465,68,0.0688,0.0019,0.0733,0.0045,0.0714

@@ -1,0 +1,83 @@
+corpus,scope,actor,outcome,scorer,control,n,n_groups,partial_spearman,p_value,p_holm,p_method,p_permutations,bootstrap_ci_low,bootstrap_ci_high,bootstrap_draws,status
+B,invocation:deepseek,deepseek,outcome_invocation_rate,sc_score,description_word_count,17,17,-0.1359,0.615899,1.0,conventional t approximation for one-control partial Spearman,,,,,estimated
+B,invocation:deepseek,deepseek,outcome_invocation_rate,sc_description,description_word_count,17,17,-0.0602,0.824756,1.0,conventional t approximation for one-control partial Spearman,,,,,estimated
+B,invocation:deepseek,deepseek,outcome_invocation_rate,mk_description_quality,description_word_count,17,17,0.4077,0.116951,0.584753,conventional t approximation for one-control partial Spearman,,,,,estimated
+B,invocation:deepseek,deepseek,outcome_invocation_rate,ss_total,description_word_count,17,17,-0.2348,0.381421,1.0,conventional t approximation for one-control partial Spearman,,,,,estimated
+B,invocation:deepseek,deepseek,outcome_invocation_rate,conformance_overall,description_word_count,17,17,0.1173,0.665294,1.0,conventional t approximation for one-control partial Spearman,,,,,estimated
+B,invocation:qwen,qwen,outcome_invocation_rate,sc_score,description_word_count,17,17,-0.0526,0.846651,0.922072,conventional t approximation for one-control partial Spearman,,,,,estimated
+B,invocation:qwen,qwen,outcome_invocation_rate,sc_description,description_word_count,17,17,-0.3968,0.128101,0.512405,conventional t approximation for one-control partial Spearman,,,,,estimated
+B,invocation:qwen,qwen,outcome_invocation_rate,mk_description_quality,description_word_count,17,17,0.4744,0.063344,0.316721,conventional t approximation for one-control partial Spearman,,,,,estimated
+B,invocation:qwen,qwen,outcome_invocation_rate,ss_total,description_word_count,17,17,-0.324,0.220824,0.662472,conventional t approximation for one-control partial Spearman,,,,,estimated
+B,invocation:qwen,qwen,outcome_invocation_rate,conformance_overall,description_word_count,17,17,0.1985,0.461036,0.922072,conventional t approximation for one-control partial Spearman,,,,,estimated
+A,execution:held-out,,outcome_heldout_mean,sc_score,description_word_count,120,68,-0.5252,0.0,0.0,conventional t approximation for one-control partial Spearman,,-0.6578,-0.3589,10000,estimated
+A,execution:held-out,,outcome_heldout_mean,sc_score,body_token_count,120,68,-0.5541,0.0,0.0,conventional t approximation for one-control partial Spearman,,-0.6587,-0.4347,10000,estimated
+A,execution:held-out,,outcome_heldout_mean,sc_score,has_code_block,120,68,-0.4528,0.0,7e-06,conventional t approximation for one-control partial Spearman,,-0.5918,-0.2844,10000,estimated
+A,execution:held-out,,outcome_heldout_mean,sc_score,has_numbered_steps,120,68,-0.3768,2.4e-05,0.000673,conventional t approximation for one-control partial Spearman,,-0.502,-0.2494,10000,estimated
+A,execution:held-out,,outcome_heldout_mean,sc_body,description_word_count,120,68,,,,,,,,,uninformative (low range)
+A,execution:held-out,,outcome_heldout_mean,sc_body,body_token_count,120,68,,,,,,,,,uninformative (low range)
+A,execution:held-out,,outcome_heldout_mean,sc_body,has_code_block,120,68,,,,,,,,,uninformative (low range)
+A,execution:held-out,,outcome_heldout_mean,sc_body,has_numbered_steps,120,68,,,,,,,,,uninformative (low range)
+A,execution:held-out,,outcome_heldout_mean,sv_information_density,description_word_count,120,68,0.1744,0.057861,1.0,conventional t approximation for one-control partial Spearman,,-0.0308,0.3631,10000,estimated
+A,execution:held-out,,outcome_heldout_mean,sv_information_density,body_token_count,120,68,0.0877,0.343112,1.0,conventional t approximation for one-control partial Spearman,,-0.1208,0.2913,10000,estimated
+A,execution:held-out,,outcome_heldout_mean,sv_information_density,has_code_block,120,68,0.1375,0.135949,1.0,conventional t approximation for one-control partial Spearman,,-0.0719,0.3303,10000,estimated
+A,execution:held-out,,outcome_heldout_mean,sv_information_density,has_numbered_steps,120,68,-0.0249,0.788443,1.0,conventional t approximation for one-control partial Spearman,,-0.1985,0.1531,10000,estimated
+A,execution:held-out,,outcome_heldout_mean,sv_instruction_specificity,description_word_count,120,68,0.3716,3.2e-05,0.000822,conventional t approximation for one-control partial Spearman,,0.2097,0.5158,10000,estimated
+A,execution:held-out,,outcome_heldout_mean,sv_instruction_specificity,body_token_count,120,68,0.2787,0.002146,0.053658,conventional t approximation for one-control partial Spearman,,0.1029,0.4421,10000,estimated
+A,execution:held-out,,outcome_heldout_mean,sv_instruction_specificity,has_code_block,120,68,0.2028,0.026945,0.592787,conventional t approximation for one-control partial Spearman,,0.0328,0.3673,10000,estimated
+A,execution:held-out,,outcome_heldout_mean,sv_instruction_specificity,has_numbered_steps,120,68,0.1252,0.174752,1.0,conventional t approximation for one-control partial Spearman,,-0.0517,0.2972,10000,estimated
+A,execution:held-out,,outcome_heldout_mean,sv_imperative_ratio,description_word_count,120,68,0.1905,0.037987,0.797723,conventional t approximation for one-control partial Spearman,,-0.0188,0.375,10000,estimated
+A,execution:held-out,,outcome_heldout_mean,sv_imperative_ratio,body_token_count,120,68,0.0938,0.310177,1.0,conventional t approximation for one-control partial Spearman,,-0.1134,0.2908,10000,estimated
+A,execution:held-out,,outcome_heldout_mean,sv_imperative_ratio,has_code_block,120,68,0.1078,0.24316,1.0,conventional t approximation for one-control partial Spearman,,-0.0983,0.2981,10000,estimated
+A,execution:held-out,,outcome_heldout_mean,sv_imperative_ratio,has_numbered_steps,120,68,-0.0177,0.8483,1.0,conventional t approximation for one-control partial Spearman,,-0.1954,0.1584,10000,estimated
+A,execution:held-out,,outcome_heldout_mean,ss_total,description_word_count,120,68,0.1219,0.186678,1.0,conventional t approximation for one-control partial Spearman,,-0.0623,0.3225,10000,estimated
+A,execution:held-out,,outcome_heldout_mean,ss_total,body_token_count,120,68,0.2072,0.023776,0.546844,conventional t approximation for one-control partial Spearman,,0.0472,0.3702,10000,estimated
+A,execution:held-out,,outcome_heldout_mean,ss_total,has_code_block,120,68,0.1239,0.179401,1.0,conventional t approximation for one-control partial Spearman,,-0.0605,0.3119,10000,estimated
+A,execution:held-out,,outcome_heldout_mean,ss_total,has_numbered_steps,120,68,0.0891,0.335269,1.0,conventional t approximation for one-control partial Spearman,,-0.0954,0.282,10000,estimated
+A,execution:held-out,,outcome_heldout_mean,ss_structure_progressive_disclosure,description_word_count,120,68,-0.1085,0.240362,1.0,conventional t approximation for one-control partial Spearman,,-0.2764,0.0713,9999,estimated
+A,execution:held-out,,outcome_heldout_mean,ss_structure_progressive_disclosure,body_token_count,120,68,-0.0764,0.408873,1.0,conventional t approximation for one-control partial Spearman,,-0.2179,0.0599,9999,estimated
+A,execution:held-out,,outcome_heldout_mean,ss_structure_progressive_disclosure,has_code_block,120,68,0.0187,0.839718,1.0,conventional t approximation for one-control partial Spearman,,-0.1363,0.1589,9999,estimated
+A,execution:held-out,,outcome_heldout_mean,ss_structure_progressive_disclosure,has_numbered_steps,120,68,-0.0212,0.818838,1.0,conventional t approximation for one-control partial Spearman,,-0.2138,0.1588,9999,estimated
+A,execution:held-out,,outcome_heldout_mean,ss_instruction_quality,description_word_count,120,68,0.3746,2.7e-05,0.000728,conventional t approximation for one-control partial Spearman,,0.2054,0.5263,10000,estimated
+A,execution:held-out,,outcome_heldout_mean,ss_instruction_quality,body_token_count,120,68,0.3787,2.2e-05,0.000628,conventional t approximation for one-control partial Spearman,,0.2121,0.534,10000,estimated
+A,execution:held-out,,outcome_heldout_mean,ss_instruction_quality,has_code_block,120,68,0.2388,0.008908,0.213791,conventional t approximation for one-control partial Spearman,,0.0971,0.3874,10000,estimated
+A,execution:held-out,,outcome_heldout_mean,ss_instruction_quality,has_numbered_steps,120,68,0.0956,0.301249,1.0,conventional t approximation for one-control partial Spearman,,-0.0954,0.3147,10000,estimated
+A,execution:held-out,,outcome_heldout_mean,conformance_overall,description_word_count,120,68,-0.0557,0.547187,1.0,conventional t approximation for one-control partial Spearman,,-0.2766,0.187,10000,estimated
+A,execution:held-out,,outcome_heldout_mean,conformance_overall,body_token_count,120,68,0.1419,0.123829,1.0,conventional t approximation for one-control partial Spearman,,-0.0208,0.3025,10000,estimated
+A,execution:held-out,,outcome_heldout_mean,conformance_overall,has_code_block,120,68,0.0535,0.5634,1.0,conventional t approximation for one-control partial Spearman,,-0.1326,0.2394,10000,estimated
+A,execution:held-out,,outcome_heldout_mean,conformance_overall,has_numbered_steps,120,68,0.1651,0.072772,1.0,conventional t approximation for one-control partial Spearman,,-0.0147,0.3355,10000,estimated
+A,execution:train,,outcome_train_mean,sc_score,description_word_count,465,68,-0.344,0.0,0.0,conventional t approximation for one-control partial Spearman,,-0.4859,-0.1906,10000,estimated
+A,execution:train,,outcome_train_mean,sc_score,body_token_count,465,68,-0.2775,0.0,0.0,conventional t approximation for one-control partial Spearman,,-0.4184,-0.129,10000,estimated
+A,execution:train,,outcome_train_mean,sc_score,has_code_block,465,68,-0.3058,0.0,0.0,conventional t approximation for one-control partial Spearman,,-0.4486,-0.1607,10000,estimated
+A,execution:train,,outcome_train_mean,sc_score,has_numbered_steps,465,68,-0.263,0.0,0.0,conventional t approximation for one-control partial Spearman,,-0.4215,-0.0906,10000,estimated
+A,execution:train,,outcome_train_mean,sc_body,description_word_count,465,68,,,,,,,,,uninformative (low range)
+A,execution:train,,outcome_train_mean,sc_body,body_token_count,465,68,,,,,,,,,uninformative (low range)
+A,execution:train,,outcome_train_mean,sc_body,has_code_block,465,68,,,,,,,,,uninformative (low range)
+A,execution:train,,outcome_train_mean,sc_body,has_numbered_steps,465,68,,,,,,,,,uninformative (low range)
+A,execution:train,,outcome_train_mean,sv_information_density,description_word_count,465,68,0.0549,0.23782,1.0,conventional t approximation for one-control partial Spearman,,-0.1197,0.2491,10000,estimated
+A,execution:train,,outcome_train_mean,sv_information_density,body_token_count,465,68,0.1497,0.001216,0.03041,conventional t approximation for one-control partial Spearman,,-0.0149,0.3117,10000,estimated
+A,execution:train,,outcome_train_mean,sv_information_density,has_code_block,465,68,0.163,0.000423,0.011415,conventional t approximation for one-control partial Spearman,,0.0409,0.2865,10000,estimated
+A,execution:train,,outcome_train_mean,sv_information_density,has_numbered_steps,465,68,-0.0272,0.558828,1.0,conventional t approximation for one-control partial Spearman,,-0.2143,0.1685,10000,estimated
+A,execution:train,,outcome_train_mean,sv_instruction_specificity,description_word_count,465,68,0.0647,0.1642,1.0,conventional t approximation for one-control partial Spearman,,-0.0474,0.1903,10000,estimated
+A,execution:train,,outcome_train_mean,sv_instruction_specificity,body_token_count,465,68,0.0305,0.512098,1.0,conventional t approximation for one-control partial Spearman,,-0.0963,0.1613,10000,estimated
+A,execution:train,,outcome_train_mean,sv_instruction_specificity,has_code_block,465,68,0.0364,0.433743,1.0,conventional t approximation for one-control partial Spearman,,-0.0846,0.1655,10000,estimated
+A,execution:train,,outcome_train_mean,sv_instruction_specificity,has_numbered_steps,465,68,-0.0609,0.190067,1.0,conventional t approximation for one-control partial Spearman,,-0.1832,0.0682,10000,estimated
+A,execution:train,,outcome_train_mean,sv_imperative_ratio,description_word_count,465,68,0.0566,0.223438,1.0,conventional t approximation for one-control partial Spearman,,-0.1112,0.2375,10000,estimated
+A,execution:train,,outcome_train_mean,sv_imperative_ratio,body_token_count,465,68,0.1262,0.00649,0.149264,conventional t approximation for one-control partial Spearman,,-0.0236,0.2763,10000,estimated
+A,execution:train,,outcome_train_mean,sv_imperative_ratio,has_code_block,465,68,0.0853,0.066338,1.0,conventional t approximation for one-control partial Spearman,,-0.0438,0.2217,10000,estimated
+A,execution:train,,outcome_train_mean,sv_imperative_ratio,has_numbered_steps,465,68,-0.0221,0.634437,1.0,conventional t approximation for one-control partial Spearman,,-0.2041,0.1575,10000,estimated
+A,execution:train,,outcome_train_mean,ss_total,description_word_count,465,68,-0.058,0.212052,1.0,conventional t approximation for one-control partial Spearman,,-0.2056,0.0972,10000,estimated
+A,execution:train,,outcome_train_mean,ss_total,body_token_count,465,68,0.0194,0.676092,1.0,conventional t approximation for one-control partial Spearman,,-0.1198,0.1536,10000,estimated
+A,execution:train,,outcome_train_mean,ss_total,has_code_block,465,68,-0.0508,0.274937,1.0,conventional t approximation for one-control partial Spearman,,-0.2003,0.0981,10000,estimated
+A,execution:train,,outcome_train_mean,ss_total,has_numbered_steps,465,68,-0.1,0.031289,0.688351,conventional t approximation for one-control partial Spearman,,-0.2557,0.056,10000,estimated
+A,execution:train,,outcome_train_mean,ss_structure_progressive_disclosure,description_word_count,465,68,-0.132,0.0044,0.105589,conventional t approximation for one-control partial Spearman,,-0.2755,0.0074,10000,estimated
+A,execution:train,,outcome_train_mean,ss_structure_progressive_disclosure,body_token_count,465,68,0.0999,0.031383,0.688351,conventional t approximation for one-control partial Spearman,,-0.0336,0.222,10000,estimated
+A,execution:train,,outcome_train_mean,ss_structure_progressive_disclosure,has_code_block,465,68,-0.0461,0.322142,1.0,conventional t approximation for one-control partial Spearman,,-0.1622,0.0634,10000,estimated
+A,execution:train,,outcome_train_mean,ss_structure_progressive_disclosure,has_numbered_steps,465,68,-0.0303,0.5154,1.0,conventional t approximation for one-control partial Spearman,,-0.1857,0.1292,10000,estimated
+A,execution:train,,outcome_train_mean,ss_instruction_quality,description_word_count,465,68,0.2392,0.0,5e-06,conventional t approximation for one-control partial Spearman,,0.1005,0.383,10000,estimated
+A,execution:train,,outcome_train_mean,ss_instruction_quality,body_token_count,465,68,0.0788,0.089962,1.0,conventional t approximation for one-control partial Spearman,,-0.071,0.227,10000,estimated
+A,execution:train,,outcome_train_mean,ss_instruction_quality,has_code_block,465,68,0.1599,0.000544,0.014141,conventional t approximation for one-control partial Spearman,,0.0348,0.2888,10000,estimated
+A,execution:train,,outcome_train_mean,ss_instruction_quality,has_numbered_steps,465,68,0.0218,0.640202,1.0,conventional t approximation for one-control partial Spearman,,-0.1574,0.2012,10000,estimated
+A,execution:train,,outcome_train_mean,conformance_overall,description_word_count,465,68,-0.0462,0.320829,1.0,conventional t approximation for one-control partial Spearman,,-0.1902,0.0862,10000,estimated
+A,execution:train,,outcome_train_mean,conformance_overall,body_token_count,465,68,-0.0665,0.152939,1.0,conventional t approximation for one-control partial Spearman,,-0.2126,0.0802,10000,estimated
+A,execution:train,,outcome_train_mean,conformance_overall,has_code_block,465,68,-0.0368,0.428949,1.0,conventional t approximation for one-control partial Spearman,,-0.1878,0.1088,10000,estimated
+A,execution:train,,outcome_train_mean,conformance_overall,has_numbered_steps,465,68,0.0228,0.624465,1.0,conventional t approximation for one-control partial Spearman,,-0.1386,0.1863,10000,estimated

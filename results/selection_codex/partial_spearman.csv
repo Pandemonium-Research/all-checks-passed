@@ -1,0 +1,21 @@
+corpus,scope,actor,outcome,scorer,control,n,n_groups,partial_spearman,p_value,p_holm,p_method,p_permutations,bootstrap_ci_low,bootstrap_ci_high,bootstrap_draws,status,detection
+B,invocation:qwen,qwen,outcome_invocation_rate,sc_score,description_word_count,17,17,-0.2847,0.285136,1.0,conventional t approximation for one-control partial Spearman,,,,,estimated,amended
+B,invocation:qwen,qwen,outcome_invocation_rate,sc_description,description_word_count,17,17,0.0122,0.96412,1.0,conventional t approximation for one-control partial Spearman,,,,,estimated,amended
+B,invocation:qwen,qwen,outcome_invocation_rate,mk_description_quality,description_word_count,17,17,0.1934,0.472936,1.0,conventional t approximation for one-control partial Spearman,,,,,estimated,amended
+B,invocation:qwen,qwen,outcome_invocation_rate,ss_total,description_word_count,17,17,-0.2767,0.299532,1.0,conventional t approximation for one-control partial Spearman,,,,,estimated,amended
+B,invocation:qwen,qwen,outcome_invocation_rate,conformance_overall,description_word_count,17,17,0.021,0.938454,1.0,conventional t approximation for one-control partial Spearman,,,,,estimated,amended
+B,invocation:deepseek,deepseek,outcome_invocation_rate,sc_score,description_word_count,17,17,-0.1049,0.699146,1.0,conventional t approximation for one-control partial Spearman,,,,,estimated,amended
+B,invocation:deepseek,deepseek,outcome_invocation_rate,sc_description,description_word_count,17,17,0.2372,0.376389,1.0,conventional t approximation for one-control partial Spearman,,,,,estimated,amended
+B,invocation:deepseek,deepseek,outcome_invocation_rate,mk_description_quality,description_word_count,17,17,0.4463,0.083159,0.415793,conventional t approximation for one-control partial Spearman,,,,,estimated,amended
+B,invocation:deepseek,deepseek,outcome_invocation_rate,ss_total,description_word_count,17,17,-0.1634,0.54531,1.0,conventional t approximation for one-control partial Spearman,,,,,estimated,amended
+B,invocation:deepseek,deepseek,outcome_invocation_rate,conformance_overall,description_word_count,17,17,0.0945,0.727782,1.0,conventional t approximation for one-control partial Spearman,,,,,estimated,amended
+B,invocation:qwen,qwen,outcome_invocation_rate,sc_score,description_word_count,17,17,-0.2736,0.305127,1.0,conventional t approximation for one-control partial Spearman,,,,,estimated,original
+B,invocation:qwen,qwen,outcome_invocation_rate,sc_description,description_word_count,17,17,0.0633,0.815865,1.0,conventional t approximation for one-control partial Spearman,,,,,estimated,original
+B,invocation:qwen,qwen,outcome_invocation_rate,mk_description_quality,description_word_count,17,17,0.2482,0.353931,1.0,conventional t approximation for one-control partial Spearman,,,,,estimated,original
+B,invocation:qwen,qwen,outcome_invocation_rate,ss_total,description_word_count,17,17,-0.3167,0.231986,1.0,conventional t approximation for one-control partial Spearman,,,,,estimated,original
+B,invocation:qwen,qwen,outcome_invocation_rate,conformance_overall,description_word_count,17,17,-0.0134,0.960586,1.0,conventional t approximation for one-control partial Spearman,,,,,estimated,original
+B,invocation:deepseek,deepseek,outcome_invocation_rate,sc_score,description_word_count,17,17,0.3977,0.127154,0.635771,conventional t approximation for one-control partial Spearman,,,,,estimated,original
+B,invocation:deepseek,deepseek,outcome_invocation_rate,sc_description,description_word_count,17,17,0.2237,0.404965,0.959143,conventional t approximation for one-control partial Spearman,,,,,estimated,original
+B,invocation:deepseek,deepseek,outcome_invocation_rate,mk_description_quality,description_word_count,17,17,0.3119,0.239577,0.958309,conventional t approximation for one-control partial Spearman,,,,,estimated,original
+B,invocation:deepseek,deepseek,outcome_invocation_rate,ss_total,description_word_count,17,17,0.2243,0.403617,0.959143,conventional t approximation for one-control partial Spearman,,,,,estimated,original
+B,invocation:deepseek,deepseek,outcome_invocation_rate,conformance_overall,description_word_count,17,17,0.2658,0.319714,0.959143,conventional t approximation for one-control partial Spearman,,,,,estimated,original

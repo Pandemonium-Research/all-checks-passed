@@ -1,0 +1,75 @@
+corpus,scope,actor,outcome,scorer,control,n,n_groups,partial_spearman,holm_family_size,method,se,mde_alpha05,mde_holm_first_step,analytic_mde_alpha05,analytic_mde_holm_first_step,naive_mde_versions_alpha05,naive_mde_lineages_alpha05,abs_rho_ge_mde_alpha05
+B,invocation:deepseek,deepseek,outcome_invocation_rate,sc_score,description_word_count,17,17,-0.1359,5,simulated partial Spearman with asymptotic p-value,,0.6806,0.7734,0.6640,0.7513,,,False
+B,invocation:deepseek,deepseek,outcome_invocation_rate,sc_description,description_word_count,17,17,-0.0602,5,simulated partial Spearman with asymptotic p-value,,0.6806,0.7734,0.6640,0.7513,,,False
+B,invocation:deepseek,deepseek,outcome_invocation_rate,mk_description_quality,description_word_count,17,17,0.4077,5,simulated partial Spearman with asymptotic p-value,,0.6806,0.7734,0.6640,0.7513,,,False
+B,invocation:deepseek,deepseek,outcome_invocation_rate,ss_total,description_word_count,17,17,-0.2348,5,simulated partial Spearman with asymptotic p-value,,0.6806,0.7734,0.6640,0.7513,,,False
+B,invocation:deepseek,deepseek,outcome_invocation_rate,conformance_overall,description_word_count,17,17,0.1173,5,simulated partial Spearman with asymptotic p-value,,0.6806,0.7734,0.6640,0.7513,,,False
+B,invocation:qwen,qwen,outcome_invocation_rate,sc_score,description_word_count,17,17,-0.0526,5,simulated partial Spearman with asymptotic p-value,,0.6806,0.7734,0.6640,0.7513,,,False
+B,invocation:qwen,qwen,outcome_invocation_rate,sc_description,description_word_count,17,17,-0.3968,5,simulated partial Spearman with asymptotic p-value,,0.6806,0.7734,0.6640,0.7513,,,False
+B,invocation:qwen,qwen,outcome_invocation_rate,mk_description_quality,description_word_count,17,17,0.4744,5,simulated partial Spearman with asymptotic p-value,,0.6806,0.7734,0.6640,0.7513,,,False
+B,invocation:qwen,qwen,outcome_invocation_rate,ss_total,description_word_count,17,17,-0.3240,5,simulated partial Spearman with asymptotic p-value,,0.6806,0.7734,0.6640,0.7513,,,False
+B,invocation:qwen,qwen,outcome_invocation_rate,conformance_overall,description_word_count,17,17,0.1985,5,simulated partial Spearman with asymptotic p-value,,0.6806,0.7734,0.6640,0.7513,,,False
+A,execution:held-out,,outcome_heldout_mean,sc_score,description_word_count,120,68,-0.5252,32,lineage-bootstrap SE,0.0766,0.2145,0.3066,,,0.2616,0.3457,True
+A,execution:held-out,,outcome_heldout_mean,sc_score,body_token_count,120,68,-0.5541,32,lineage-bootstrap SE,0.0567,0.1589,0.2272,,,0.2616,0.3457,True
+A,execution:held-out,,outcome_heldout_mean,sc_score,has_code_block,120,68,-0.4528,32,lineage-bootstrap SE,0.0781,0.2189,0.3129,,,0.2616,0.3457,True
+A,execution:held-out,,outcome_heldout_mean,sc_score,has_numbered_steps,120,68,-0.3768,32,lineage-bootstrap SE,0.0639,0.1790,0.2559,,,0.2616,0.3457,True
+A,execution:held-out,,outcome_heldout_mean,sv_information_density,description_word_count,120,68,0.1744,32,lineage-bootstrap SE,0.1002,0.2806,0.4011,,,0.2616,0.3457,False
+A,execution:held-out,,outcome_heldout_mean,sv_information_density,body_token_count,120,68,0.0877,32,lineage-bootstrap SE,0.1046,0.2931,0.4189,,,0.2616,0.3457,False
+A,execution:held-out,,outcome_heldout_mean,sv_information_density,has_code_block,120,68,0.1375,32,lineage-bootstrap SE,0.1027,0.2877,0.4112,,,0.2616,0.3457,False
+A,execution:held-out,,outcome_heldout_mean,sv_information_density,has_numbered_steps,120,68,-0.0249,32,lineage-bootstrap SE,0.0889,0.2492,0.3561,,,0.2616,0.3457,False
+A,execution:held-out,,outcome_heldout_mean,sv_instruction_specificity,description_word_count,120,68,0.3716,32,lineage-bootstrap SE,0.0773,0.2166,0.3096,,,0.2616,0.3457,True
+A,execution:held-out,,outcome_heldout_mean,sv_instruction_specificity,body_token_count,120,68,0.2787,32,lineage-bootstrap SE,0.0871,0.2440,0.3488,,,0.2616,0.3457,True
+A,execution:held-out,,outcome_heldout_mean,sv_instruction_specificity,has_code_block,120,68,0.2028,32,lineage-bootstrap SE,0.0853,0.2390,0.3417,,,0.2616,0.3457,False
+A,execution:held-out,,outcome_heldout_mean,sv_instruction_specificity,has_numbered_steps,120,68,0.1252,32,lineage-bootstrap SE,0.0882,0.2471,0.3532,,,0.2616,0.3457,False
+A,execution:held-out,,outcome_heldout_mean,sv_imperative_ratio,description_word_count,120,68,0.1905,32,lineage-bootstrap SE,0.1010,0.2829,0.4043,,,0.2616,0.3457,False
+A,execution:held-out,,outcome_heldout_mean,sv_imperative_ratio,body_token_count,120,68,0.0938,32,lineage-bootstrap SE,0.1038,0.2907,0.4155,,,0.2616,0.3457,False
+A,execution:held-out,,outcome_heldout_mean,sv_imperative_ratio,has_code_block,120,68,0.1078,32,lineage-bootstrap SE,0.1004,0.2812,0.4020,,,0.2616,0.3457,False
+A,execution:held-out,,outcome_heldout_mean,sv_imperative_ratio,has_numbered_steps,120,68,-0.0177,32,lineage-bootstrap SE,0.0899,0.2520,0.3602,,,0.2616,0.3457,False
+A,execution:held-out,,outcome_heldout_mean,ss_total,description_word_count,120,68,0.1219,32,lineage-bootstrap SE,0.0989,0.2771,0.3961,,,0.2616,0.3457,False
+A,execution:held-out,,outcome_heldout_mean,ss_total,body_token_count,120,68,0.2072,32,lineage-bootstrap SE,0.0838,0.2348,0.3357,,,0.2616,0.3457,False
+A,execution:held-out,,outcome_heldout_mean,ss_total,has_code_block,120,68,0.1239,32,lineage-bootstrap SE,0.0951,0.2664,0.3807,,,0.2616,0.3457,False
+A,execution:held-out,,outcome_heldout_mean,ss_total,has_numbered_steps,120,68,0.0891,32,lineage-bootstrap SE,0.0974,0.2728,0.3899,,,0.2616,0.3457,False
+A,execution:held-out,,outcome_heldout_mean,ss_structure_progressive_disclosure,description_word_count,120,68,-0.1085,32,lineage-bootstrap SE,0.0883,0.2475,0.3537,,,0.2616,0.3457,False
+A,execution:held-out,,outcome_heldout_mean,ss_structure_progressive_disclosure,body_token_count,120,68,-0.0764,32,lineage-bootstrap SE,0.0705,0.1976,0.2824,,,0.2616,0.3457,False
+A,execution:held-out,,outcome_heldout_mean,ss_structure_progressive_disclosure,has_code_block,120,68,0.0187,32,lineage-bootstrap SE,0.0760,0.2131,0.3045,,,0.2616,0.3457,False
+A,execution:held-out,,outcome_heldout_mean,ss_structure_progressive_disclosure,has_numbered_steps,120,68,-0.0212,32,lineage-bootstrap SE,0.0965,0.2703,0.3864,,,0.2616,0.3457,False
+A,execution:held-out,,outcome_heldout_mean,ss_instruction_quality,description_word_count,120,68,0.3746,32,lineage-bootstrap SE,0.0821,0.2301,0.3288,,,0.2616,0.3457,True
+A,execution:held-out,,outcome_heldout_mean,ss_instruction_quality,body_token_count,120,68,0.3787,32,lineage-bootstrap SE,0.0828,0.2319,0.3314,,,0.2616,0.3457,True
+A,execution:held-out,,outcome_heldout_mean,ss_instruction_quality,has_code_block,120,68,0.2388,32,lineage-bootstrap SE,0.0738,0.2069,0.2957,,,0.2616,0.3457,True
+A,execution:held-out,,outcome_heldout_mean,ss_instruction_quality,has_numbered_steps,120,68,0.0956,32,lineage-bootstrap SE,0.1051,0.2945,0.4210,,,0.2616,0.3457,False
+A,execution:held-out,,outcome_heldout_mean,conformance_overall,description_word_count,120,68,-0.0557,32,lineage-bootstrap SE,0.1186,0.3322,0.4748,,,0.2616,0.3457,False
+A,execution:held-out,,outcome_heldout_mean,conformance_overall,body_token_count,120,68,0.1419,32,lineage-bootstrap SE,0.0825,0.2313,0.3305,,,0.2616,0.3457,False
+A,execution:held-out,,outcome_heldout_mean,conformance_overall,has_code_block,120,68,0.0535,32,lineage-bootstrap SE,0.0959,0.2687,0.3840,,,0.2616,0.3457,False
+A,execution:held-out,,outcome_heldout_mean,conformance_overall,has_numbered_steps,120,68,0.1651,32,lineage-bootstrap SE,0.0894,0.2504,0.3579,,,0.2616,0.3457,False
+A,execution:train,,outcome_train_mean,sc_score,description_word_count,465,68,-0.3440,32,lineage-bootstrap SE,0.0758,0.2124,0.3036,,,0.1335,0.3457,True
+A,execution:train,,outcome_train_mean,sc_score,body_token_count,465,68,-0.2775,32,lineage-bootstrap SE,0.0738,0.2067,0.2954,,,0.1335,0.3457,True
+A,execution:train,,outcome_train_mean,sc_score,has_code_block,465,68,-0.3058,32,lineage-bootstrap SE,0.0743,0.2083,0.2977,,,0.1335,0.3457,True
+A,execution:train,,outcome_train_mean,sc_score,has_numbered_steps,465,68,-0.2630,32,lineage-bootstrap SE,0.0850,0.2382,0.3404,,,0.1335,0.3457,True
+A,execution:train,,outcome_train_mean,sv_information_density,description_word_count,465,68,0.0549,32,lineage-bootstrap SE,0.0947,0.2653,0.3793,,,0.1335,0.3457,False
+A,execution:train,,outcome_train_mean,sv_information_density,body_token_count,465,68,0.1497,32,lineage-bootstrap SE,0.0833,0.2334,0.3337,,,0.1335,0.3457,False
+A,execution:train,,outcome_train_mean,sv_information_density,has_code_block,465,68,0.1630,32,lineage-bootstrap SE,0.0627,0.1757,0.2511,,,0.1335,0.3457,False
+A,execution:train,,outcome_train_mean,sv_information_density,has_numbered_steps,465,68,-0.0272,32,lineage-bootstrap SE,0.0978,0.2739,0.3915,,,0.1335,0.3457,False
+A,execution:train,,outcome_train_mean,sv_instruction_specificity,description_word_count,465,68,0.0647,32,lineage-bootstrap SE,0.0598,0.1675,0.2394,,,0.1335,0.3457,False
+A,execution:train,,outcome_train_mean,sv_instruction_specificity,body_token_count,465,68,0.0305,32,lineage-bootstrap SE,0.0651,0.1825,0.2608,,,0.1335,0.3457,False
+A,execution:train,,outcome_train_mean,sv_instruction_specificity,has_code_block,465,68,0.0364,32,lineage-bootstrap SE,0.0635,0.1778,0.2541,,,0.1335,0.3457,False
+A,execution:train,,outcome_train_mean,sv_instruction_specificity,has_numbered_steps,465,68,-0.0609,32,lineage-bootstrap SE,0.0643,0.1802,0.2575,,,0.1335,0.3457,False
+A,execution:train,,outcome_train_mean,sv_imperative_ratio,description_word_count,465,68,0.0566,32,lineage-bootstrap SE,0.0890,0.2493,0.3564,,,0.1335,0.3457,False
+A,execution:train,,outcome_train_mean,sv_imperative_ratio,body_token_count,465,68,0.1262,32,lineage-bootstrap SE,0.0768,0.2152,0.3076,,,0.1335,0.3457,False
+A,execution:train,,outcome_train_mean,sv_imperative_ratio,has_code_block,465,68,0.0853,32,lineage-bootstrap SE,0.0683,0.1915,0.2737,,,0.1335,0.3457,False
+A,execution:train,,outcome_train_mean,sv_imperative_ratio,has_numbered_steps,465,68,-0.0221,32,lineage-bootstrap SE,0.0922,0.2584,0.3693,,,0.1335,0.3457,False
+A,execution:train,,outcome_train_mean,ss_total,description_word_count,465,68,-0.0580,32,lineage-bootstrap SE,0.0779,0.2183,0.3121,,,0.1335,0.3457,False
+A,execution:train,,outcome_train_mean,ss_total,body_token_count,465,68,0.0194,32,lineage-bootstrap SE,0.0704,0.1972,0.2819,,,0.1335,0.3457,False
+A,execution:train,,outcome_train_mean,ss_total,has_code_block,465,68,-0.0508,32,lineage-bootstrap SE,0.0761,0.2133,0.3049,,,0.1335,0.3457,False
+A,execution:train,,outcome_train_mean,ss_total,has_numbered_steps,465,68,-0.1000,32,lineage-bootstrap SE,0.0801,0.2245,0.3209,,,0.1335,0.3457,False
+A,execution:train,,outcome_train_mean,ss_structure_progressive_disclosure,description_word_count,465,68,-0.1320,32,lineage-bootstrap SE,0.0721,0.2019,0.2886,,,0.1335,0.3457,False
+A,execution:train,,outcome_train_mean,ss_structure_progressive_disclosure,body_token_count,465,68,0.0999,32,lineage-bootstrap SE,0.0647,0.1813,0.2591,,,0.1335,0.3457,False
+A,execution:train,,outcome_train_mean,ss_structure_progressive_disclosure,has_code_block,465,68,-0.0461,32,lineage-bootstrap SE,0.0577,0.1617,0.2312,,,0.1335,0.3457,False
+A,execution:train,,outcome_train_mean,ss_structure_progressive_disclosure,has_numbered_steps,465,68,-0.0303,32,lineage-bootstrap SE,0.0811,0.2272,0.3247,,,0.1335,0.3457,False
+A,execution:train,,outcome_train_mean,ss_instruction_quality,description_word_count,465,68,0.2392,32,lineage-bootstrap SE,0.0721,0.2019,0.2887,,,0.1335,0.3457,True
+A,execution:train,,outcome_train_mean,ss_instruction_quality,body_token_count,465,68,0.0788,32,lineage-bootstrap SE,0.0764,0.2139,0.3058,,,0.1335,0.3457,False
+A,execution:train,,outcome_train_mean,ss_instruction_quality,has_code_block,465,68,0.1599,32,lineage-bootstrap SE,0.0654,0.1833,0.2619,,,0.1335,0.3457,False
+A,execution:train,,outcome_train_mean,ss_instruction_quality,has_numbered_steps,465,68,0.0218,32,lineage-bootstrap SE,0.0923,0.2586,0.3697,,,0.1335,0.3457,False
+A,execution:train,,outcome_train_mean,conformance_overall,description_word_count,465,68,-0.0462,32,lineage-bootstrap SE,0.0706,0.1979,0.2829,,,0.1335,0.3457,False
+A,execution:train,,outcome_train_mean,conformance_overall,body_token_count,465,68,-0.0665,32,lineage-bootstrap SE,0.0752,0.2108,0.3013,,,0.1335,0.3457,False
+A,execution:train,,outcome_train_mean,conformance_overall,has_code_block,465,68,-0.0368,32,lineage-bootstrap SE,0.0759,0.2126,0.3039,,,0.1335,0.3457,False
+A,execution:train,,outcome_train_mean,conformance_overall,has_numbered_steps,465,68,0.0228,32,lineage-bootstrap SE,0.0832,0.2330,0.3331,,,0.1335,0.3457,False

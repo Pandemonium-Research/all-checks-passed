@@ -1,0 +1,11 @@
+actor,row,length,with_invoked,with_total,with_rate,without_invoked,without_total,without_rate,rd,informative,dropped_reason,rd_mh,se_sato,ci_low,ci_high,cmh_statistic,cmh_p,n_informative_strata,dropped_strata
+qwen,stratum,03,7,24,0.2917,0,24,0.0000,0.2917,yes,,,,,,,,,
+qwen,stratum,12,7,24,0.2917,0,24,0.0000,0.2917,yes,,,,,,,,,
+qwen,stratum,25,18,24,0.7500,0,24,0.0000,0.7500,yes,,,,,,,,,
+qwen,stratum,44,23,24,0.9583,1,24,0.0417,0.9167,yes,,,,,,,,,
+qwen,pooled,,,,,,,,,,,0.5625,0.0507,0.4631,0.6619,81.1,0,4,none
+deepseek,stratum,03,24,24,1.0000,4,24,0.1667,0.8333,yes,,,,,,,,,
+deepseek,stratum,12,24,24,1.0000,2,24,0.0833,0.9167,yes,,,,,,,,,
+deepseek,stratum,25,24,24,1.0000,5,24,0.2083,0.7917,yes,,,,,,,,,
+deepseek,stratum,44,23,24,0.9583,9,24,0.3750,0.5833,yes,,,,,,,,,
+deepseek,pooled,,,,,,,,,,,0.7812,0.0431,0.6967,0.8658,120.4,0,4,none

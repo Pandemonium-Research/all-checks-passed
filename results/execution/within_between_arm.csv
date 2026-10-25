@@ -1,0 +1,29 @@
+scope,outcome,scorer,n,n_lineages,n_arms,within_lineage,between_lineage,between_lineage_within_arm,arm_ci_low,arm_ci_high,arm_ci_draws,status
+execution:held-out,outcome_heldout_mean,sc_score,120,68,8,-0.7732,0.4054,0.1573,-0.1618,0.3726,10000,estimated
+execution:held-out,outcome_heldout_mean,sc_body,120,68,8,,,,,,0,uninformative (low range)
+execution:held-out,outcome_heldout_mean,sv_information_density,120,68,8,0.4101,-0.2234,0.3739,0.0751,0.5635,10000,estimated
+execution:held-out,outcome_heldout_mean,sv_instruction_specificity,120,68,8,0.8713,-0.3829,0.568,0.3338,0.6968,10000,estimated
+execution:held-out,outcome_heldout_mean,sv_imperative_ratio,120,68,8,0.4181,-0.2081,0.3976,0.0904,0.5778,10000,estimated
+execution:held-out,outcome_heldout_mean,ss_total,120,68,8,0.2429,0.19,0.2453,-0.0702,0.4778,10000,estimated
+execution:held-out,outcome_heldout_mean,ss_structure_progressive_disclosure,120,68,8,-0.4137,0.2261,0.0654,-0.1481,0.2757,10000,estimated
+execution:held-out,outcome_heldout_mean,ss_instruction_quality,120,68,8,0.7794,-0.4321,-0.1982,-0.3941,0.0721,10000,estimated
+execution:held-out,outcome_heldout_mean,conformance_overall,120,68,8,-0.0692,0.3271,0.2263,-0.0865,0.5664,10000,estimated
+execution:held-out,outcome_heldout_mean,has_numbered_steps,120,68,8,0.7974,-0.4155,-0.0904,-0.3437,0.1723,10000,estimated
+execution:held-out,outcome_heldout_mean,body_line_count,120,68,8,0.803,-0.4979,-0.3399,-0.5181,-0.0902,10000,estimated
+execution:held-out,outcome_heldout_mean,imperative_opener_count,120,68,8,0.8344,-0.4167,0.1106,-0.1419,0.3982,10000,estimated
+execution:held-out,outcome_heldout_mean,has_worked_example,120,68,8,0.7673,-0.3523,0.0937,-0.1894,0.3198,10000,estimated
+execution:held-out,outcome_heldout_mean,has_code_block,120,68,8,0.7273,-0.3297,-0.0583,-0.2603,0.1908,10000,estimated
+execution:train,outcome_train_mean,sc_score,465,68,8,-0.2718,-0.0189,0.0102,-0.2461,0.2665,10000,estimated
+execution:train,outcome_train_mean,sc_body,465,68,8,,,,,,0,uninformative (low range)
+execution:train,outcome_train_mean,sv_information_density,465,68,8,0.0999,0.117,0.0895,-0.1972,0.3531,10000,estimated
+execution:train,outcome_train_mean,sv_instruction_specificity,465,68,8,0.3156,-0.1496,-0.0293,-0.279,0.2178,10000,estimated
+execution:train,outcome_train_mean,sv_imperative_ratio,465,68,8,0.1103,0.0991,0.1174,-0.1564,0.3781,10000,estimated
+execution:train,outcome_train_mean,ss_total,465,68,8,-0.0218,0.0201,0.0822,-0.1652,0.3445,10000,estimated
+execution:train,outcome_train_mean,ss_structure_progressive_disclosure,465,68,8,-0.2765,0.0784,0.0292,-0.1844,0.2609,10000,estimated
+execution:train,outcome_train_mean,ss_instruction_quality,465,68,8,0.2963,0.0577,0.1025,-0.1635,0.3424,10000,estimated
+execution:train,outcome_train_mean,conformance_overall,465,68,8,-0.0054,0.1173,0.047,-0.24,0.3019,10000,estimated
+execution:train,outcome_train_mean,has_numbered_steps,465,68,8,0.3945,0.1134,0.1903,-0.0697,0.3997,10000,estimated
+execution:train,outcome_train_mean,body_line_count,465,68,8,0.415,-0.0801,-0.0491,-0.2525,0.1979,10000,estimated
+execution:train,outcome_train_mean,imperative_opener_count,465,68,8,0.345,-0.1016,0.0498,-0.2171,0.3289,10000,estimated
+execution:train,outcome_train_mean,has_worked_example,465,68,8,0.2413,0.0009,-0.0234,-0.3096,0.2727,10000,estimated
+execution:train,outcome_train_mean,has_code_block,465,68,8,0.4037,0.0824,0.0362,-0.1348,0.313,10000,estimated

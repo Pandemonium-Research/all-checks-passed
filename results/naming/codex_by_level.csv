@@ -1,0 +1,7 @@
+actor,level,with_invoked,with_total,with_rate,without_invoked,without_total,without_rate,gap
+qwen,L2,11,32,0.3438,0,32,0.0000,0.3438
+qwen,L3,15,32,0.4688,0,32,0.0000,0.4688
+qwen,L4,7,32,0.2188,0,32,0.0000,0.2188
+deepseek,L2,30,32,0.9375,18,32,0.5625,0.3750
+deepseek,L3,32,32,1.0000,30,32,0.9375,0.0625
+deepseek,L4,32,32,1.0000,31,32,0.9688,0.0312

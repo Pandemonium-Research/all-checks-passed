@@ -1,0 +1,17 @@
+scope,baseline,scorer,n,n_distinct,delta_r2_adding_scorer,partial_spearman
+execution:train,description_word_count,sc_score,465,4,0.0352,-0.344
+execution:train,description_word_count,sc_score_newline_adjusted,465,3,-0.0083,-0.1155
+execution:train,body_token_count,sc_score,465,4,0.0069,-0.2775
+execution:train,body_token_count,sc_score_newline_adjusted,465,3,-0.0055,-0.1061
+execution:train,has_code_block,sc_score,465,4,0.0145,-0.3058
+execution:train,has_code_block,sc_score_newline_adjusted,465,3,-0.0063,-0.0963
+execution:train,has_numbered_steps,sc_score,465,4,0.015,-0.263
+execution:train,has_numbered_steps,sc_score_newline_adjusted,465,3,-0.0059,-0.1557
+execution:held-out,description_word_count,sc_score,120,4,0.1591,-0.5252
+execution:held-out,description_word_count,sc_score_newline_adjusted,120,3,-0.0433,-0.1012
+execution:held-out,body_token_count,sc_score,120,4,0.0958,-0.5541
+execution:held-out,body_token_count,sc_score_newline_adjusted,120,3,-0.0062,-0.0941
+execution:held-out,has_code_block,sc_score,120,4,0.0645,-0.4528
+execution:held-out,has_code_block,sc_score_newline_adjusted,120,3,-0.0129,-0.0654
+execution:held-out,has_numbered_steps,sc_score,120,4,0.0499,-0.3768
+execution:held-out,has_numbered_steps,sc_score_newline_adjusted,120,3,0.0076,-0.153

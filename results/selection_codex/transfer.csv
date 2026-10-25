@@ -1,0 +1,3 @@
+actor,n_variants,spearman_codex_vs_claude_code,p_value,mean_rate_codex,mean_rate_claude_code
+qwen,17,0.7169,0.001201,0.4216,0.5074
+deepseek,17,0.9726,0.0,0.9436,0.8456
